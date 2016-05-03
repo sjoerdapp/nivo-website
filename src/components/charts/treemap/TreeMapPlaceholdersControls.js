@@ -13,6 +13,10 @@ class TreeMapControls extends Component {
         this.handleColorsUpdate  = this.handleColorsUpdate.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.settings !== this.props.settings;
+    }
+
     handleModeUpdate(e) {
         const { onSettingsUpdate, settings } = this.props;
         onSettingsUpdate(_.assign({}, settings, {

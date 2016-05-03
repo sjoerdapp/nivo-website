@@ -3,7 +3,7 @@ import _                                   from 'lodash';
 import { Link }                            from 'react-router';
 import { ResponsiveTreeMapPlaceholders }   from 'nivo';
 import ChartHeader                         from '../../ChartHeader';
-import ChartCode                           from '../../ChartCode';
+import ChartCodeAndData                    from '../../ChartCodeAndData';
 import Properties                          from '../../Properties';
 import TreeMapPlaceholdersControls         from './TreeMapPlaceholdersControls';
 import { generateTreeMapPlaceholdersCode } from '../../../code-generators/treeMapCodeGenerator';
@@ -47,9 +47,11 @@ class TreeMapPlaceholdersPage extends Component {
                                     valueAccessor={d => d.loc}
                                     {...settings}
                                 >
-                                    {nodes => nodes.map(node => {
+                                    {nodes => nodes.map((node, i) => {
+                                        //console.log(i);
                                         return (
                                             <div
+                                                key={`${i}.${node.key}.${node.data.loc}`}
                                                 style={{
                                                     position:         'absolute',
                                                     top:              node.style.y,
@@ -73,7 +75,7 @@ class TreeMapPlaceholdersPage extends Component {
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="root" data={_.cloneDeep(root)} />
+                            <ChartCodeAndData code={code} dataKey="root" data={root} />
                         </div>
                         <div className="grid_item grid_item-full">
                             <Properties

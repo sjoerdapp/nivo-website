@@ -15,6 +15,10 @@ class TreeMapControls extends Component {
         this.handleColorsUpdate       = this.handleColorsUpdate.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.settings !== this.props.settings;
+    }
+
     handleModeUpdate(e) {
         const { onSettingsUpdate, settings } = this.props;
         onSettingsUpdate(_.assign({}, settings, {
@@ -112,13 +116,11 @@ class TreeMapControls extends Component {
     }
 }
 
-const { func } = PropTypes;
+const { object, func } = PropTypes;
 
 TreeMapControls.propTypes = {
+    settings:         object.isRequired,
     onSettingsUpdate: func.isRequired
-};
-
-TreeMapControls.defaultProps = {
 };
 
 

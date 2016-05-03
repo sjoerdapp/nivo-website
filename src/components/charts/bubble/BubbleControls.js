@@ -21,6 +21,10 @@ class BubbleControls extends Component {
         this.handleDampingUpdate       = this.handleDampingUpdate.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.settings !== this.props.settings;
+    }
+
     handlePaddingUpdate(e) {
         const { onChange, settings } = this.props;
         onChange(_.assign({}, settings, {
@@ -136,13 +140,11 @@ class BubbleControls extends Component {
     }
 }
 
-const { func } = PropTypes;
+const { object, func } = PropTypes;
 
 BubbleControls.propTypes = {
-    onChange: func.isRequired
-};
-
-BubbleControls.defaultProps = {
+    onChange: func.isRequired,
+    settings: object.isRequired
 };
 
 

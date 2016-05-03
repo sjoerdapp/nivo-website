@@ -4,7 +4,7 @@ import { Link }                        from 'react-router';
 import { ResponsiveStack as Stack }    from 'nivo';
 import { generateStackData }           from '../../generators';
 import ChartHeader                     from '../ChartHeader';
-import ChartCode                       from '../ChartCode';
+import ChartCodeAndData                from '../ChartCodeAndData';
 import Properties                      from '../Properties';
 import StackControls                   from './StackControls';
 import generateStackCode               from '../../code-generators/generateStackCode';
@@ -57,7 +57,7 @@ class StackPage extends Component {
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="layers" data={_.cloneDeep(layers)} />
+                            <ChartCodeAndData code={code} dataKey="layers" data={layers} />
                         </div>
                         <div className="grid_item grid_item-1_3">
                             <p className="description">Use <a href="https://github.com/mbostock/d3/wiki/Stack-Layout" target="_blank">d3 Stack layout</a>, there's also a <Link to="radial-stack">RadialStack</Link></p>

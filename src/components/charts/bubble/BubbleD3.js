@@ -3,7 +3,7 @@ import _                               from 'lodash';
 import { Link }                        from 'react-router';
 import { BubbleD3, BubbleLegends }     from 'nivo';
 import ChartHeader                     from '../../ChartHeader';
-import ChartCode                       from '../../ChartCode';
+import ChartCodeAndData                from '../../ChartCodeAndData';
 import Properties                      from '../../Properties';
 import BubbleControls                  from './BubbleControls';
 import { generateBubbleCode }          from '../../../code-generators/bubbleCodeGenerator';
@@ -64,7 +64,7 @@ class BubblePage extends Component {
                                 settings={settings}
                                 onChange={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="root" data={_.cloneDeep(root)} />
+                            <ChartCodeAndData code={code} dataKey="root" data={root} />
                         </div>
                         <div className="grid_item grid_item-full">
                             <Properties

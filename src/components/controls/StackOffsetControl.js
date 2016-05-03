@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classNames                      from 'classnames'
-import Nivo                            from 'nivo';
 
 
 const offsets = [
@@ -18,13 +16,17 @@ class StackOffsetControl extends Component {
         this.handleOffsetChange = this.handleOffsetChange.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value;
+    }
+
     handleOffsetChange(e) {
         const { onChange } = this.props;
         onChange(e.target.value);
     }
 
     render() {
-        const { value, onChange } = this.props;
+        const { value } = this.props;
 
         return (
             <div className="control control-stack-offset">
@@ -49,9 +51,6 @@ const { func, oneOf } = PropTypes;
 StackOffsetControl.propTypes = {
     onChange: func.isRequired,
     value:    oneOf(offsets).isRequired
-};
-
-StackOffsetControl.defaultProps = {
 };
 
 

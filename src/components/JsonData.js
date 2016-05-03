@@ -10,6 +10,14 @@ class JsonData extends Component {
         this.state = { show: false };
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.data === this.props.data && nextState.show === this.state.show) {
+            return false;
+        }
+
+        return true;
+    }
+
     handleToggleClick() {
         this.setState({ show: !this.state.show });
     }

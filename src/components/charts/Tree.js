@@ -4,7 +4,7 @@ import { Link }                        from 'react-router';
 import { Tree }                        from 'nivo';
 import { generateLibTree }             from '../../generators';
 import ChartHeader                     from '../ChartHeader';
-import ChartCode                       from '../ChartCode';
+import ChartCodeAndData                from '../ChartCodeAndData';
 import Properties                      from '../Properties';
 import TreeControls                    from './TreeControls';
 import generateTreeCode                from '../../code-generators/generateTreeCode';
@@ -146,7 +146,7 @@ class TreePage extends Component {
                                     {...settings}
                                 />
                             </div>
-                            <ChartCode code={code} dataKey="root" data={_.cloneDeep(libTree)} />
+                            <ChartCodeAndData code={code} dataKey="root" data={libTree} />
                         </div>
                         <div className="grid_item grid_item-1_2">
                             <p><a href="http://bl.ocks.org/mbostock/4063570" target="_blank">block</a>.</p>

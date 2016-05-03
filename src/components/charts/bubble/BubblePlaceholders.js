@@ -3,7 +3,7 @@ import _                                  from 'lodash';
 import { Link }                           from 'react-router';
 import { BubblePlaceholders }             from 'nivo';
 import ChartHeader                        from '../../ChartHeader';
-import ChartCode                          from '../../ChartCode';
+import ChartCodeAndData                   from '../../ChartCodeAndData';
 import { generateBubblePlaceholdersCode } from '../../../code-generators/bubbleCodeGenerator';
 import BubblePlaceholdersControls         from './BubblePlaceholdersControls';
 
@@ -73,7 +73,7 @@ class BubblePlaceholdersPage extends Component {
                                 settings={settings}
                                 onChange={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="root" data={_.cloneDeep(root)} />
+                            <ChartCodeAndData code={code} dataKey="root" data={root} />
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 
 
 class ChartHeader extends Component {
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
         const { chartClass, tags } = this.props;
 

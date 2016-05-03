@@ -3,7 +3,7 @@ import _                               from 'lodash';
 import { Link }                        from 'react-router';
 import { ResponsiveTreeMapD3 }         from 'nivo';
 import ChartHeader                     from '../../ChartHeader';
-import ChartCode                       from '../../ChartCode';
+import ChartCodeAndData                from '../../ChartCodeAndData';
 import Properties                      from '../../Properties';
 import TreeMapControls                 from './TreeMapControls';
 import { generateTreeMapD3Code }       from '../../../code-generators/treeMapCodeGenerator';
@@ -107,7 +107,7 @@ class TreeMapD3 extends Component {
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="root" data={_.cloneDeep(root)} />
+                            <ChartCodeAndData code={code} dataKey="root" data={root} />
                         </div>
                         <div className="grid_item grid_item-full">
                             <Properties

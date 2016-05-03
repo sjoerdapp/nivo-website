@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import classNames                      from 'classnames'
 import Nivo                            from 'nivo';
+import ColorsControlItem               from './ColorsControlItem';
 
 
 const colors = [
@@ -19,13 +19,17 @@ class ColorsControl extends Component {
         this.handleColorsChange = this.handleColorsChange.bind(this);
     }
 
-    handleColorsChange(e) {
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value;
+    }
+
+    handleColorsChange(id) {
         const { onChange } = this.props;
-        onChange(e.target.value);
+        onChange(id);
     }
 
     render() {
-        const { value, onChange } = this.props;
+        const { value } = this.props;
 
         return (
             <div className="control control-colors">
@@ -35,21 +39,12 @@ class ColorsControl extends Component {
                 <div className="control-help">Chart color range.</div>
                 <div>
                     {colors.map(({ id, colors }) => (
-                        <div
-                            key={id}
-                            className={classNames('control-colors_colors', {
-                                '_is-current': value === id
-                            })}
-                            onClick={() => onChange(id)}
-                        >
-                            {colors.map(color => (
-                                <span
-                                    key={color}
-                                    className="control-colors_colors_item"
-                                    style={{ background: color }}
-                                />
-                            ))}
-                        </div>
+                        <ColorsControlItem
+                            key={id} id={id}
+                            colors={colors}
+                            isCurrent={value === id}
+                            onClick={this.handleColorsChange}
+                        />
                     ))}
                 </div>
             </div>
@@ -57,13 +52,11 @@ class ColorsControl extends Component {
     }
 }
 
-const { func, oneOf } = PropTypes;
+const { func, string } = PropTypes;
 
 ColorsControl.propTypes = {
-    onChange: func.isRequired
-};
-
-ColorsControl.defaultProps = {
+    onChange: func.isRequired,
+    value:    string.isRequired
 };
 
 

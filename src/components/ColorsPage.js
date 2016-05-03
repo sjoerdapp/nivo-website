@@ -2,7 +2,7 @@ import React, { Component, PropTypes }      from 'react';
 import d3                                   from 'd3';
 import _                                    from 'lodash';
 import { generateProgrammingLanguageStats } from '../generators';
-import ChartCode                            from './ChartCode';
+import ChartCodeAndData                     from './ChartCodeAndData';
 import Nivo, {
     Chart,
     Pie,
@@ -173,7 +173,7 @@ class ColorsPage extends Component {
                                         </Pie>
                                     </Chart>
                                 </div>
-                                <ChartCode code={`<Whatever color="${directive}" />`} />
+                                <ChartCodeAndData code={`<Whatever color="${directive}" />`} />
                             </div>
                         ))}
                         <div className="grid_item-full">

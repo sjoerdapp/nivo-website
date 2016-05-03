@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classNames                      from 'classnames'
-import Nivo                            from 'nivo';
 
 
 class ColorControl extends Component {
@@ -8,6 +6,10 @@ class ColorControl extends Component {
         super(props);
 
         this.handleColorChange = this.handleColorChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value;
     }
 
     handleColorChange(e) {
@@ -22,7 +24,7 @@ class ColorControl extends Component {
     }
 
     render() {
-        const { value, label, help, onChange } = this.props;
+        const { value, label, help } = this.props;
 
         let requireAmount = false;
         let selectValue   = value;

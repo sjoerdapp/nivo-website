@@ -3,6 +3,10 @@ import PropertiesTable                 from './PropertiesTable';
 
 
 class Properties extends Component {
+    shouldComponentUpdate() {
+        return false;
+    }
+
     render() {
         const { chartClass, properties } = this.props;
 

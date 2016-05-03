@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import JsonData             from './JsonData';
 
 
 class ChartCode extends Component {
-    render() {
-        const { snippetId, dataKey, data } = this.props;
-        let { code }                       = this.props;
-
-        if (code === undefined || code === null) {
-            code = require(`../snippets/${snippetId}.txt`);
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.code === this.props.code) {
+            return false;
         }
-        //<span className="code-snippet_label">usage</span>
+
+        return true;
+    }
+
+    render() {
+        const { code } = this.props;
 
         return (
-            <div>
-                <div className="code-snippet">
-                    <pre>{code}</pre>
-                </div>
-                {data && (<JsonData dataKey={`{${dataKey}}`} data={data} />)}
+            <div className="code-snippet">
+                <pre>{code}</pre>
             </div>
         );
     }

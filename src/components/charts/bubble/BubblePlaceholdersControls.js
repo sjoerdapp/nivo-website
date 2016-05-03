@@ -13,6 +13,10 @@ class BubblePlaceholdersControls extends Component {
         this.handlePaddingUpdate = this.handlePaddingUpdate.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.settings !== this.props.settings;
+    }
+
     handlePaddingUpdate(e) {
         const { onChange, settings } = this.props;
         onChange(_.assign({}, settings, {

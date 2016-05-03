@@ -3,7 +3,7 @@ import _                                        from 'lodash';
 import { Link }                                 from 'react-router';
 import { generateStackData }                    from '../../generators';
 import ChartHeader                              from '../ChartHeader';
-import ChartCode                                from '../ChartCode';
+import ChartCodeAndData                         from '../ChartCodeAndData';
 import Properties                               from '../Properties';
 import RadialStackControls                      from './RadialStackControls';
 import generateRadialStackCode                  from '../../code-generators/generateRadialStackCode';
@@ -135,7 +135,7 @@ class RadialStackPage extends Component {
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
-                            <ChartCode code={code} dataKey="layers" data={_.cloneDeep(layers)} />
+                            <ChartCodeAndData code={code} dataKey="layers" data={layers} />
                         </div>
                         <div className="grid_item grid_item-1_2">
                             <div className="grid">

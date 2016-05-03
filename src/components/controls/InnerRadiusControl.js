@@ -8,6 +8,10 @@ class InnerRadiusControl extends Component {
         this.handleInnerRadiusUpdate = this.handleInnerRadiusUpdate.bind(this);
     }
 
+    shouldComponentUpdate(nextProps) {
+        return nextProps.value !== this.props.value;
+    }
+
     handleInnerRadiusUpdate(e) {
         const { onChange } = this.props;
         const innerRadius = e.target.value === '0' ? 0 : parseFloat(e.target.value);
@@ -15,35 +19,7 @@ class InnerRadiusControl extends Component {
     }
 
     render() {
-        const { radius, help, value } = this.props;
-
-        const outerCircleStyle = {
-            position:     'relative',
-            background:   '#e25d47',
-            width:        radius * 2,
-            height:       radius * 2,
-            borderRadius: radius
-        };
-
-        const innerRadius = radius * value;
-
-        const innerRadiusStyle = {
-            position:     'absolute',
-            background:   '#ddd',
-            top:          radius - innerRadius,
-            left:         radius - innerRadius,
-            width:        innerRadius * 2,
-            height:       innerRadius * 2,
-            borderRadius: innerRadius
-        };
-
-        /*
-        <div>
-            <div style={outerCircleStyle}>
-                <div style={innerRadiusStyle} />
-            </div>
-        </div>
-        */
+        const { value, help } = this.props;
 
         return (
             <div className="control control-inner-radius">
@@ -65,13 +41,12 @@ class InnerRadiusControl extends Component {
 const { number, node } = PropTypes;
 
 InnerRadiusControl.propTypes = {
-    radius: number.isRequired,
-    help:   node.isRequired
+    value: number.isRequired,
+    help:  node.isRequired
 };
 
 InnerRadiusControl.defaultProps = {
-    radius: 16,
-    help:   'Chart inner radius.'
+    help: 'Chart inner radius.'
 };
 
 
