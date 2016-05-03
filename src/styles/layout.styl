@@ -1,0 +1,62 @@
+.nav_toggle
+  width $mini-nav-width
+  background $mini-nav-background-color
+
+.mini-nav
+  display flex
+
+.content
+  position absolute
+  top    $header-height
+  right  0
+  bottom 0
+  left   $mini-nav-width
+  overflow-x hidden
+  overflow-y auto
+
+.page_content
+  margin 0 70px
+
+.chart_header
+  min-height 150px
+  padding 0 70px 30px 70px
+
+  &_wrapper
+    width 48.5%
+
+
+@media $media-query-tablet
+  .nav_toggle
+    width $header-height
+    background $accent-color
+
+  .mini-nav
+    display none
+
+   .content
+    left 0
+
+  .page_content
+    margin 0 30px
+
+
+@media $media-query-mobile
+  .nav_toggle
+    width $header-height
+    background $accent-color
+
+  .mini-nav
+    display none
+
+   .content
+    left 0
+
+  .page_content
+    margin 0 15px
+
+  .chart_header
+    min-height auto
+    padding 20px 15px 170px 15px
+
+    &_wrapper
+      width 100%

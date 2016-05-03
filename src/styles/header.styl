@@ -1,0 +1,36 @@
+.nav_toggle
+  display block
+  height $header-height
+  cursor pointer
+  background-image url('../assets/nivo-nav-bars.png')
+  background-size 26px 26px
+  background-repeat no-repeat
+  background-position center center
+
+header
+  position absolute
+  top  0
+  left 0
+  width 100%
+  //padding 0 $content-margin
+  background $header-background-color
+  height $header-height
+  display flex
+  align-items center
+  justify-content flex-start
+
+  nav
+    position absolute
+    top   0
+    right 80px
+    height $header-height
+
+  a
+    color $main-background-color
+    height 100%
+    display block
+    line-height $header-height
+    text-decoration none
+
+    &.active
+      background $main-background-color

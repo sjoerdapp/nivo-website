@@ -1,0 +1,8 @@
+<Chart margin={{ top: 40, right: 120, bottom: 40, left: 120 }}>
+    <Pie data={data} innerRadius={0.6}>
+        <PieSliceLegends
+            orient={false} radius={16} labelFn={d => d.data.value}
+            badgeColor="inherit:darker(.2)" textColor="inherit:brighter(.5)"
+        />
+    </Pie>
+</Chart>

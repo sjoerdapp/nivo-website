@@ -1,0 +1,165 @@
+.overlay
+  position absolute
+  top    0
+  right  0
+  bottom 0
+  left   0
+  z-index 1050
+  background rgba(0, 0, 0, .5)
+
+.sidebar
+  position absolute
+  top    0
+  bottom 0
+  left   0
+  width $sidebar-width
+  background #fff
+  overflow-x hidden
+  overflow-y auto
+  z-index 1100
+  box-shadow 3px 0 15px rgba(0, 0, 0, 0.2)
+
+  h3
+    position relative
+    margin 15px 15px 7px
+    padding 12px 0 8px
+    font-size 12px
+    font-weight 600
+    text-transform uppercase
+    //border-bottom 1px solid $title-text-color
+
+    &:first-child
+      margin-top 0
+
+  &_link
+    &-colors,
+    &-animation
+      vertical-align middle
+
+      &:before
+        vertical-align middle
+        content ''
+        display inline-block
+        width 80px
+        height 32px
+        margin-right 12px
+        background-repeat no-repeat
+        background-size contain
+        background-position center center
+
+    &-colors:before
+      background-image url('../assets/nivo-colors-icon.png')
+
+    &-animation:before
+      background-image url('../assets/nivo-animation-icon.png')
+
+    &-sub
+      padding 6px 10px 6px 65px !important
+      font-size 14px
+
+  a
+    position relative
+    display block
+    padding 9px 15px
+    text-decoration none
+    color #777
+
+    &:after
+      content ''
+      display block
+      position absolute
+      top    0
+      right  0
+      bottom 0
+      width 3px
+      background $accent-color
+      opacity 0
+      transition all 300ms
+
+    &:hover
+      color #000
+
+      &:after
+        opacity .25
+
+    &.active
+      color $title-text-color
+
+      &:after
+        opacity 1
+
+  .chart_link
+    display flex
+    align-items center
+
+    &:before
+      content ''
+      display block
+      background-repeat no-repeat
+      background-position center center
+      background-size contain
+      width  32px
+      height 32px
+      margin-right 15px
+
+    &-sub
+      font-size 14px
+      padding 5px 15px
+
+      &:before
+        height 20px
+
+    &-bubble:before
+      background-image url('../assets/nivo-chart-icon-bubble-grey.png')
+    &-bubble.active:before
+      background-image url('../assets/nivo-chart-icon-bubble-red.png')
+
+    &-bubble-react:before
+      background-image url('../assets/react-logo-grey.png')
+    &-bubble-react.active:before
+      background-image url('../assets/react-logo-red.png')
+
+    &-bubble-d3:before,
+    &-treemap-d3:before
+      background-image url('../assets/d3-logo-grey.png')
+    &-bubble-d3.active:before,
+    &-treemap-d3.active:before
+      background-image url('../assets/d3-logo-red.png')
+
+    &-bubble-placeholders:before,
+    &-treemap-placeholders:before
+      background-image url('../assets/nivo-chart-icon-bubble-placeholders-grey.png')
+    &-bubble-placeholders.active:before,
+    &-treemap-placeholders.active:before
+      background-image url('../assets/nivo-chart-icon-bubble-placeholders-red.png')
+
+    &-radial-stack:before
+      background-image url('../assets/nivo-chart-icon-radial-stack-grey.png')
+    &-radial-stack.active:before
+      background-image url('../assets/nivo-chart-icon-radial-stack-red.png')
+
+    &-treemap:before
+      background-image url('../assets/nivo-chart-icon-treemap-grey.png')
+    &-treemap.active:before
+      background-image url('../assets/nivo-chart-icon-treemap-red.png')
+
+    &-pie:before
+      background-image url('../assets/nivo-chart-icon-pie-grey.png')
+    &-pie.active:before
+      background-image url('../assets/nivo-chart-icon-pie-red.png')
+
+    &-tree:before
+      background-image url('../assets/nivo-chart-icon-tree-grey.png')
+    &-tree.active:before
+      background-image url('../assets/nivo-chart-icon-tree-red.png')
+
+    &-stack:before
+      background-image url('../assets/nivo-chart-icon-stack-grey.png')
+    &-stack.active:before
+      background-image url('../assets/nivo-chart-icon-stack-red.png')
+
+  .chart
+    display block
+    width 80px
+    height 48px
+    margin-right 15px

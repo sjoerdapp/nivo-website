@@ -1,0 +1,216 @@
+// —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// DIMENSIONS
+// —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+$header-height              = 60px
+$sidebar-width              = 260px
+$content-margin             = 50px
+$mini-nav-width             = 80px
+$mini-nav-item-size         = 56px
+$header-bottom-offset       = 130px
+
+@require 'settings/colors.styl'
+@require 'settings/breakpoints.styl'
+
+@require 'layout.styl'
+@require 'grid.styl'
+@require 'nav.styl'
+@require 'mini-nav.styl'
+@require 'properties.styl'
+@require 'table.styl'
+@require 'header.styl'
+@require 'home.styl'
+@require 'charts.styl'
+@require 'controls.styl'
+@require 'chart-controls.styl'
+
+
+.brand
+  display none
+  background-image url('../assets/nivo-logo.png')
+  width  $sidebar-width
+  height $header-height
+  background-position 15px center
+  background-size 40%
+  background-repeat no-repeat
+  margin-left 35px
+
+.dice-roll
+  position fixed
+  top   (22px + $header-height)
+  right ($content-margin + 25px)
+  display block
+  font-size 16px
+  padding 7px 12px
+  font-family 'Roboto', sans-serif
+  border-radius 2px
+  background #fff
+  color      $accent-color
+  cursor pointer
+  z-index 1000
+  box-shadow 0 1px 7px rgba(0, 0, 0, .35)
+
+code,
+.code
+  display inline-block
+  background transparent//$code-background-color
+  color      $code-text-color
+  //padding 1px 7px
+  //border-radius 2px
+
+.code
+  &-number
+    font-weight bold
+    color $code-number-color
+
+  &-string
+    color $code-string-color
+
+svg
+  shape-rendering optimizeSpeed // auto
+
+#nivo
+  width  100%
+  height 100%
+
+html,
+body
+  margin 0
+  background $main-background-color
+  color      $main-text-color
+  font-size 16px
+  line-height 1.4em
+  font-family 'Lato', sans-serif
+  width  100%
+  height 100%
+
+*, *:before, *:after
+  box-sizing border-box
+
+a
+  color $links-color
+
+h2, h3, h4, h5, h6
+  color $title-text-color
+  font-weight 300
+  font-family 'Lato', sans-serif
+
+h1
+  font-size 28px
+  margin 0 0 20px 0
+  padding 0
+  font-weight 300
+  font-family 'Roboto Slab', serif
+  //text-shadow 0 1px 1px darken($accent-color, 25)
+
+p
+  margin 15px 0
+
+  &:first-child
+    margin-top 0
+
+.description
+  font-family 'Roboto Slab', serif
+
+code,
+.code,
+pre
+  font-family Consolas, monospace
+
+.code-snippet,
+.chart_code
+  margin-top 30px
+  position relative
+  padding 7px 12px
+  font-size 14px
+  background $code-background-color
+  color      $code-text-color
+
+  &_label
+    position absolute
+    top   9px
+    right 12px
+    display block
+    background darken($code-background-color, 5)
+    padding 5px 9px
+    font-size 14px
+    line-height 1em
+    border-radius 2px
+
+  pre
+    margin 0
+
+.json-data
+  position relative
+  min-height 32px
+  margin 0 0 15px
+  border-top 1px solid darken($code-background-color, 5)
+  background $code-background-color
+  color      $code-text-color
+
+  &_toggle
+    display block
+    position absolute
+    top   0
+    right 0
+    height 32px
+    background $button-background-color
+    color $code-background-color
+    padding 6px 12px
+    font-size 14px
+    cursor pointer
+    border-radius 0
+    font-family Consolas, monospace
+
+  &_key
+    height 32px
+    font-size 14px
+    display inline-block
+    padding 6px 0
+    margin-left 12px
+    font-family Consolas, monospace
+
+  &_json
+    font-size 14px
+    max-height 300px
+    padding 0 15px
+    overflow auto
+    font-family Consolas, monospace
+
+  &._show
+    .json-data_toggle
+      top   12px
+      right 12px
+      border-radius 2px
+
+.component_meta
+  //margin 0 $content-margin 25px 0
+
+  &_tag
+    display inline-block
+    position relative
+    background lighten($accent-color, 10)
+    color      $main-background-color
+    font-size 14px
+    line-height 1em
+    padding 5px 8px 5px 18px
+    border-radius 2px
+    margin-right 7px
+
+    &:before
+      content ''
+      display block
+      position absolute
+      top  9px
+      left 7px
+      width  6px
+      height 6px
+      border-radius 3px
+      background $main-background-color
+
+#app
+  width  100%
+  height 100%
+
+.intro
+  margin 0 $content-margin 30px 0
+

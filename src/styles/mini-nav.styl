@@ -1,0 +1,147 @@
+@keyframes mini-nav-click
+  0%
+    opacity 0
+    transform scale(0.2)
+  40%
+    opacity 1
+    transform scale(1)
+  100%
+    opacity 0
+    transform scale(1.4)
+
+
+.mini-nav
+  position absolute
+  top    $header-height
+  bottom 0
+  left   0
+  width $mini-nav-width
+  z-index 1000
+  flex-direction column
+  align-items center
+  //padding-top 10px
+  background $mini-nav-background-color
+  //box-shadow 1px 0 3px rgba(0, 0, 0, 0.15)
+
+  &_item
+    cursor pointer
+    display block
+    width  $mini-nav-item-size
+    height $mini-nav-width
+    position absolute
+    left 0
+    top 0
+    transform translate3d(0,0,0)
+
+    &_feedback
+    &_icon
+      position absolute
+      top  0
+      left 0
+      display block
+      width  $mini-nav-width
+      height $mini-nav-item-size
+
+    &_feedback
+      background #ddd
+      border-radius 100%
+      opacity 0
+      transform scale(0.2)
+
+    &.click
+      .mini-nav_item_feedback
+        animation mini-nav-click linear 800ms
+
+    &_icon
+      background-size ($mini-nav-item-size * 0.7) ($mini-nav-item-size * 0.7)
+      background-position center center
+      background-repeat no-repeat
+
+    &-nivo
+      margin-bottom 0
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-logo-circle.png')
+
+    &-back
+      .mini-nav_item_icon
+        background-size ($mini-nav-item-size * 0.5) ($mini-nav-item-size * 0.5)
+        background-image url('../assets/nivo-mini-nav-back-grey.png')
+      &:hover .mini-nav_item_icon
+        background-image url('../assets/nivo-mini-nav-back-red.png')
+
+    &-bubble
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-bubble-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-bubble-red.png')
+
+    &-bubble-react
+      .mini-nav_item_icon
+        background-image url('../assets/react-logo-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/react-logo-red.png')
+
+    &-bubble-d3,
+    &-treemap-d3
+      .mini-nav_item_icon
+        background-image url('../assets/d3-logo-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/d3-logo-red.png')
+
+    &-bubble-placeholders,
+    &-treemap-placeholders
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-bubble-placeholders-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-bubble-placeholders-red.png')
+
+    &-pie
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-pie-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-pie-red.png')
+
+    &-stack
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-stack-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-stack-red.png')
+
+    &-radial-stack
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-radial-stack-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-radial-stack-red.png')
+
+    &-treemap
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-treemap-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-treemap-red.png')
+
+    &-tree
+      .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-tree-grey.png')
+      &.active .mini-nav_item_icon
+        background-image url('../assets/nivo-chart-icon-tree-red.png')
+
+    &_label
+      display none
+      position absolute
+      left 105%
+      top  50%
+      font-size 12px
+      font-weight normal
+      white-space pre
+      background #C6432D
+      color #fff
+      text-decoration none
+      height 22px
+      line-height 22px
+      margin-top -11px
+      padding 0 7px
+      border-radius 2px
+
+    &:hover
+      .mini-nav_item_label
+        display none
