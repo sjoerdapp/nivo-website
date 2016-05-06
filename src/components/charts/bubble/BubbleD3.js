@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
 import { Link }                        from 'react-router';
-import { BubbleD3, BubbleLegends }     from 'nivo';
+import { ResponsiveBubbleD3, BubbleLegends } from 'nivo';
 import ChartHeader                     from '../../ChartHeader';
 import ChartCodeAndData                from '../../ChartCodeAndData';
 import Properties                      from '../../Properties';
 import BubbleControls                  from './BubbleControls';
-import { generateBubbleCode }          from '../../../code-generators/bubbleCodeGenerator';
+import { generateBubbleD3Code }        from '../../../code-generators/bubbleCodeGenerator';
 
 
 class BubblePage extends Component {
@@ -35,7 +35,7 @@ class BubblePage extends Component {
         const { root }     = this.props;
         const { settings } = this.state;
 
-        const code = generateBubbleCode(settings);
+        const code = generateBubbleD3Code(settings);
 
         return (
             <div>
@@ -44,17 +44,17 @@ class BubblePage extends Component {
                     <div className="grid">
                         <div className="grid_item grid_item-1_3">
                             <div className="main-chart">
-                                <BubbleD3
-                                    margin={{ top: 40, bottom: 40 }}
+                                <ResponsiveBubbleD3
+                                    margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
                                     root={_.cloneDeep(root)}
-                                    valueProperty="loc"
+                                    value="loc"
                                     {...settings}
                                 >
                                     <BubbleLegends
                                         textColor={settings.textColor}
                                         skipRadius={settings.skipRadius}
                                     />
-                                </BubbleD3>
+                                </ResponsiveBubbleD3>
                             </div>
                             <p className="description">Use d3 for DOM mutation and transitions.</p>
                             <p className="description">This chart offer various implementations, you can render it using <Link to="/bubble/d3">pure d3</Link> or <Link to="/bubble">let react handles all the rendering</Link> and you can even <Link to="/bubble/placeholders">render whatever you want</Link> instead of the boring circles.</p>
@@ -70,7 +70,14 @@ class BubblePage extends Component {
                             <Properties
                                 chartClass="BubbleD3"
                                 properties={[
-                                    ['root', 'object', true, '', ''],
+                                    'width',
+                                    'height',
+                                    ['root', 'object', true, '', 'data.'],
+                                    ['value', 'string|function', true, (<code className="code-string">"value"</code>), (
+                                        <span>
+                                            define value accessor, if string given, will use <code>datum[value]</code>,<br/>if function given, it will be invoked for each node and will receive the node as first argument, it must the node value.
+                                        </span>
+                                    )],
                                     ['padding', 'number', true, (<code className="code-number">1</code>), (
                                         <span>sets the approximate padding between adjacent circles, in pixels. see <a href="https://github.com/mbostock/d3/wiki/Pack-Layout#padding" target="_blank">official d3 documentation</a>.</span>
                                     )],

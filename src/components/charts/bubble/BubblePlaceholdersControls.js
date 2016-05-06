@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
+import ColorsControl                   from '../../controls/ColorsControl';
 import ChartControls                   from '../../ChartControls';
 
 
@@ -11,6 +12,7 @@ class BubblePlaceholdersControls extends Component {
         super(props);
 
         this.handlePaddingUpdate = this.handlePaddingUpdate.bind(this);
+        this.handleColorsUpdate  = this.handleColorsUpdate.bind(this);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -22,6 +24,11 @@ class BubblePlaceholdersControls extends Component {
         onChange(_.assign({}, settings, {
             padding: parseInt(e.target.value, 10)
         }));
+    }
+
+    handleColorsUpdate(colors) {
+        const { onChange, settings } = this.props;
+        onChange(_.assign({}, settings, { colors }));
     }
 
     render() {
@@ -40,6 +47,12 @@ class BubblePlaceholdersControls extends Component {
                             min="0" max="32" step="1"
                             value={settings.padding}
                             onChange={this.handlePaddingUpdate}
+                        />
+                    </div>
+                    <div className="chart-controls_item">
+                        <ColorsControl
+                            value={settings.colors}
+                            onChange={this.handleColorsUpdate}
                         />
                     </div>
                 </ChartControls>

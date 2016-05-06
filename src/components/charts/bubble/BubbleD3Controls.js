@@ -6,9 +6,9 @@ import ColorControl                    from '../../controls/ColorControl';
 
 
 /**
- * This component is used to configure a nivo Bubble chart.
+ * This component is used to configure a nivo BubbleD3 chart.
  */
-class BubbleControls extends Component {
+class BubbleD3Controls extends Component {
     constructor(props) {
         super(props);
 
@@ -73,6 +73,24 @@ class BubbleControls extends Component {
     render() {
         const { settings } = this.props;
 
+        /*
+        <div className="chart-controls_item">
+            <span className="control-switch">
+                <input
+                    className="cmn-toggle"
+                    id="bubble-fisheye"
+                    type="checkbox"
+                    checked={settings.enableFisheye}
+                    onChange={this.handleEnableFisheyeUpdate}
+                />
+                <label htmlFor="bubble-fisheye" />
+            </span>
+            &nbsp;
+            <label htmlFor="bubble-fisheye">enableFisheye</label>
+            <div className="control-help">Enable fisheye.</div>
+        </div>
+        */
+
         return (
             <div>
                 <ChartControls chartClass="Bubble">
@@ -94,14 +112,8 @@ class BubbleControls extends Component {
                             onChange={this.handleColorsUpdate}
                         />
                     </div>
-                    <div className="chart-controls_item">
-                        <ColorControl
-                            label="textColor"
-                            help="Method to compute legend text color."
-                            value={settings.textColor}
-                            onChange={this.handleTextColorUpdate}
-                        />
-                    </div>
+                </ChartControls>
+                <ChartControls chartClass="BubbleLegends">
                     <div className="chart-controls_item">
                         <label>
                             skipRadius: <code className="code code-number">{settings.skipRadius}</code>
@@ -114,6 +126,14 @@ class BubbleControls extends Component {
                             onChange={this.handleSkipRadiusUpdate}
                         />
                     </div>
+                    <div className="chart-controls_item">
+                        <ColorControl
+                            label="textColor"
+                            help="Method to compute legend text color."
+                            value={settings.textColor}
+                            onChange={this.handleTextColorUpdate}
+                        />
+                    </div>
                 </ChartControls>
             </div>
         );
@@ -122,10 +142,10 @@ class BubbleControls extends Component {
 
 const { object, func } = PropTypes;
 
-BubbleControls.propTypes = {
+BubbleD3Controls.propTypes = {
     onChange: func.isRequired,
     settings: object.isRequired
 };
 
 
-export default BubbleControls;
+export default BubbleD3Controls;

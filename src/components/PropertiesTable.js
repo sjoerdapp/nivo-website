@@ -25,6 +25,20 @@ class PropertiesTable extends Component {
                             prop = [prop, 'string', true, (<code>Nivo.defaults.{prop}</code>), (<Link to="animation">documentation</Link>)];
                         } else if (prop === 'colors') {
                             prop = [prop, '*', true, (<code>Nivo.defaults.colorRange</code>), (<Link to="colors">documentation</Link>)];
+                        } else if (prop === 'motionStiffness') {
+                            prop = [prop, 'number', true, (<code>Nivo.defaults.motionStiffness</code>), (
+                                <span>
+                                    determine react-motion spring stiffness.
+                                </span>
+                            )];
+                        } else if (prop === 'motionDamping') {
+                            prop = [prop, 'number', true, (<code>Nivo.defaults.motionDamping</code>), (
+                                <span>
+                                    determine react-motion spring damping.
+                                </span>
+                            )];
+                        } else if (prop === 'width' || prop === 'height') {
+                            prop = [prop, 'number', true, '', `${prop} of the chart.`];
                         }
 
                         return (
