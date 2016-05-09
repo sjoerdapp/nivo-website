@@ -4,7 +4,7 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 
 import Pie                    from './components/charts/Pie';
-import Stack                  from './components/charts/Stack';
+import Stack                  from './components/charts/stack/Stack';
 import RadialStack            from './components/charts/RadialStack';
 import LineChart              from './components/charts/LineChartPage';
 import TreeMap                from './components/charts/treemap/TreeMap';

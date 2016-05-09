@@ -1,30 +1,30 @@
-export const generateBubbleCode = ({ padding, colors, skipRadius, textColor }) => {
+export const generateBubbleCode = ({ padding, colors, borderWidth, borderColor, labelSkipRadius, labelTextColor }) => {
     return `import { render } from 'react-dom';
 import { Bubble } from 'nivo';
 
 render((
     <Bubble
         width={400} height={400}
-        root={root}
-        value="loc" label="name"
-        padding={${padding}} skipRadius={${skipRadius}}
-        colors="${colors}" textColor="${textColor}"
+        data={data} value="loc"
+        padding={${padding}} colors="${colors}"
+        borderWidth={${borderWidth}} borderColor="${borderColor}"
+        label="name" labelSkipRadius={${labelSkipRadius}} labelTextColor="${labelTextColor}"
     />
 ), document.getElementById('chart'));`;
 };
 
 
-export const generateBubbleD3Code = ({ padding, colors, skipRadius, textColor }) => {
+export const generateBubbleD3Code = ({ padding, colors, borderWidth, borderColor, labelSkipRadius, labelTextColor }) => {
     return `import { render }   from 'react-dom';
 import { BubbleD3 } from 'nivo';
 
 render((
     <BubbleD3
         width={400} height={400}
-        root={root}
-        value="loc" label="name"
-        padding={${padding}} skipRadius={${skipRadius}}
-        colors="${colors}" textColor="${textColor}"
+        data={data} value="loc"
+        padding={${padding}} colors="${colors}"
+        borderWidth={${borderWidth}} borderColor="${borderColor}"
+        label="name" labelSkipRadius={${labelSkipRadius}} labelTextColor="${labelTextColor}"
     />
 ), document.getElementById('chart'));`;
 };
@@ -38,7 +38,7 @@ render((
     <BubblePlaceholders
         width={400} height={400}
         namespace="html"
-        root={root} value="loc"
+        data={data} value="loc"
         padding={${padding}}
         colors="${colors}"
     >

@@ -40,6 +40,7 @@
     "classnames": "2.2.4",
     "d3": "3.5.16",
     "faker": "3.1.0",
+    "history": "2.1.1",
     "immutable": "3.8.1",
     "nivo": "*",
     "react": "^15.0.1",

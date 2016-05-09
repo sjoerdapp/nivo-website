@@ -12,13 +12,15 @@ class BubbleControls extends Component {
     constructor(props) {
         super(props);
 
-        this.handlePaddingUpdate       = this.handlePaddingUpdate.bind(this);
-        this.handleEnableFisheyeUpdate = this.handleEnableFisheyeUpdate.bind(this);
-        this.handleColorsUpdate        = this.handleColorsUpdate.bind(this);
-        this.handleSkipRadiusUpdate    = this.handleSkipRadiusUpdate.bind(this);
-        this.handleTextColorUpdate     = this.handleTextColorUpdate.bind(this);
-        this.handleStiffnessUpdate     = this.handleStiffnessUpdate.bind(this);
-        this.handleDampingUpdate       = this.handleDampingUpdate.bind(this);
+        this.handlePaddingUpdate         = this.handlePaddingUpdate.bind(this);
+        this.handleColorsUpdate          = this.handleColorsUpdate.bind(this);
+        this.handleBorderColorUpdate     = this.handleBorderColorUpdate.bind(this);
+        this.handleBorderWidthUpdate     = this.handleBorderWidthUpdate.bind(this);
+        this.handleLabelTextColorUpdate  = this.handleLabelTextColorUpdate.bind(this);
+        this.handleLabelTextDYUpdate     = this.handleLabelTextDYUpdate.bind(this);
+        this.handleLabelSkipRadiusUpdate = this.handleLabelSkipRadiusUpdate.bind(this);
+        this.handleStiffnessUpdate       = this.handleStiffnessUpdate.bind(this);
+        this.handleDampingUpdate         = this.handleDampingUpdate.bind(this);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -37,23 +39,35 @@ class BubbleControls extends Component {
         onChange(_.assign({}, settings, { colors }));
     }
 
-    handleSkipRadiusUpdate(e) {
+    handleLabelSkipRadiusUpdate(e) {
         const { onChange, settings } = this.props;
         onChange(_.assign({}, settings, {
-            skipRadius: parseInt(e.target.value, 10)
+            labelSkipRadius: parseInt(e.target.value, 10)
         }));
     }
 
-    handleEnableFisheyeUpdate(e) {
+    handleBorderWidthUpdate(e) {
         const { onChange, settings } = this.props;
         onChange(_.assign({}, settings, {
-            enableFisheye: e.target.checked
+            borderWidth: parseInt(e.target.value, 10)
         }));
     }
 
-    handleTextColorUpdate(textColor) {
+    handleBorderColorUpdate(borderColor) {
         const { onChange, settings } = this.props;
-        onChange(_.assign({}, settings, { textColor }));
+        onChange(_.assign({}, settings, { borderColor }));
+    }
+
+    handleLabelTextColorUpdate(labelTextColor) {
+        const { onChange, settings } = this.props;
+        onChange(_.assign({}, settings, { labelTextColor }));
+    }
+
+    handleLabelTextDYUpdate(e) {
+        const { onChange, settings } = this.props;
+        onChange(_.assign({}, settings, {
+            labelTextDY: parseInt(e.target.value, 10)
+        }));
     }
 
     handleStiffnessUpdate(e) {
@@ -95,23 +109,55 @@ class BubbleControls extends Component {
                         />
                     </div>
                     <div className="chart-controls_item">
+                        <label>
+                            borderWidth: <code className="code code-number">{settings.borderWidth}</code>
+                        </label>
+                        <div className="control-help">Width of circle border.</div>
+                        <input
+                            type="range"
+                            min="0" max="10" step="1"
+                            value={settings.borderWidth}
+                            onChange={this.handleBorderWidthUpdate}
+                        />
+                    </div>
+                    <div className="chart-controls_item">
                         <ColorControl
-                            label="textColor"
+                            label="borderColor"
+                            help="Method to compute border color."
+                            value={settings.borderColor}
+                            onChange={this.handleBorderColorUpdate}
+                        />
+                    </div>
+                    <div className="chart-controls_item">
+                        <ColorControl
+                            label="labelTextColor"
                             help="Method to compute legend text color."
-                            value={settings.textColor}
-                            onChange={this.handleTextColorUpdate}
+                            value={settings.labelTextColor}
+                            onChange={this.handleLabelTextColorUpdate}
                         />
                     </div>
                     <div className="chart-controls_item">
                         <label>
-                            skipRadius: <code className="code code-number">{settings.skipRadius}</code>
+                            labelTextDY: <code className="code code-number">{settings.labelTextDY}</code>
+                        </label>
+                        <div className="control-help">Label y offset, used to vertically center text.</div>
+                        <input
+                            type="range"
+                            min="-12" max="12" step="1"
+                            value={settings.labelTextDY}
+                            onChange={this.handleLabelTextDYUpdate}
+                        />
+                    </div>
+                    <div className="chart-controls_item">
+                        <label>
+                            labelSkipRadius: <code className="code code-number">{settings.labelSkipRadius}</code>
                         </label>
                         <div className="control-help">Skip label rendering if node radius is lower than given value, 0 to disable.</div>
                         <input
                             type="range"
                             min="0" max="32" step="1"
-                            value={settings.skipRadius}
-                            onChange={this.handleSkipRadiusUpdate}
+                            value={settings.labelSkipRadius}
+                            onChange={this.handleLabelSkipRadiusUpdate}
                         />
                     </div>
                 </ChartControls>

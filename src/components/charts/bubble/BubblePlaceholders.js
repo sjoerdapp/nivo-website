@@ -17,10 +17,10 @@ class BubblePlaceholdersPage extends Component {
 
         this.state = {
             settings: {
-                padding:   1,
-                colors:    'nivo',
-                stiffness: 120,
-                damping:   10
+                padding:         1,
+                colors:          'nivo',
+                motionStiffness: 120,
+                motionDamping:   10
             }
         };
     }
@@ -44,7 +44,7 @@ class BubblePlaceholdersPage extends Component {
                             <div className="main-chart">
                                 <ResponsiveBubblePlaceholders
                                     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                                    root={_.cloneDeep(root)}
+                                    data={_.cloneDeep(root)}
                                     namespace="html"
                                     value="loc"
                                     {...settings}
@@ -63,7 +63,6 @@ class BubblePlaceholdersPage extends Component {
                                                     border:          `2px solid ${node.style.color}`,
                                                     backgroundSize:  'contain',
                                                     backgroundImage: `url(http://placekitten.com/240/240)`
-                                                    //backgroundImage: `url(http://placekitten.com/${Math.ceil(node.data.r * 2)}/${Math.ceil(node.data.r * 2)})`
                                                 }}
                                             />
                                         );
@@ -78,7 +77,7 @@ class BubblePlaceholdersPage extends Component {
                                 settings={settings}
                                 onChange={this.handleSettingsUpdate}
                             />
-                            <ChartCodeAndData code={code} dataKey="root" data={root} />
+                            <ChartCodeAndData code={code} data={root} />
                         </div>
                         <div className="grid_item grid_item-full">
                             <Properties
@@ -86,7 +85,7 @@ class BubblePlaceholdersPage extends Component {
                                 properties={[
                                     'width',
                                     'height',
-                                    ['root', 'object', true, '', 'data.'],
+                                    ['data', 'object', true, '', 'data.'],
                                     ['value', 'string|function', true, (<code className="code-string">"value"</code>), (
                                         <span>
                                             define value accessor, if string given, will use <code>datum[value]</code>,<br/>if function given, it will be invoked for each node and will receive the node as first argument, it must the node value.

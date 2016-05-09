@@ -14,8 +14,9 @@ import {
     PieColumnLegends,
     ResponsiveTreeMapD3 as TreeMap,
     Tree,
-    Bubble,
-    ResponsiveStack as Stack,
+    ResponsiveBubble as Bubble,
+    ResponsiveStack,
+    StackSlicer,
     ResponsiveRadialStack as RadialStack,
     RadialStackAngleAxis,
     XYScales,
@@ -65,12 +66,19 @@ class Home extends Component {
                     </span>
                 </Link>
                 <Link className="home_item" to="/stack">
-                    <Stack
-                        layers={generateStackData()}
+                    <ResponsiveStack
+                        margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
+                        data={generateStackData()}
                         colors={colors}
                         offset="wiggle"
                         transitionDuration={transitionDuration}
-                    />
+                    >
+                        <StackSlicer
+                            radius={4} borderWidth={1}
+                            color="inherit" dotBorderColor="#e25d47"
+                            lineWidth={0} lineColor="#e25d47"
+                        />
+                    </ResponsiveStack>
                     <span className="home_item_label">
                         <span>Stack documentation</span>
                     </span>
@@ -111,11 +119,19 @@ class Home extends Component {
                     <p>nivo provides a rich set of dataviz components,<br />built on top of the awesome d3 and Reactjs libraries.</p>
                 </div>
                 <Link className="home_item" to="/stack">
-                    <Stack
-                        layers={generateStackData()}
+                    <ResponsiveStack
+                        margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
+                        data={generateStackData()}
                         colors={colors}
                         offset="expand"
-                    />
+                        transitionDuration={transitionDuration}
+                    >
+                        <StackSlicer
+                            radius={4} borderWidth={1}
+                            color="inherit" dotBorderColor="#e25d47"
+                            lineWidth={1} lineColor="inherit:darker(.6)"
+                        />
+                    </ResponsiveStack>
                     <span className="home_item_label">
                         <span>Stack documentation</span>
                     </span>
@@ -155,11 +171,19 @@ class Home extends Component {
                     </span>
                 </Link>
                 <Link className="home_item" to="/stack">
-                    <Stack
-                        layers={generateStackData()}
+                    <ResponsiveStack
+                        margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
+                        data={generateStackData()}
                         transitionDuration={transitionDuration}
                         colors={colors}
-                    />
+                        transitionDuration={transitionDuration}
+                    >
+                        <StackSlicer
+                            radius={4} borderWidth={1}
+                            color="inherit" dotBorderColor="#e25d47"
+                            lineWidth={0} lineColor="#e25d47"
+                        />
+                    </ResponsiveStack>
                     <span className="home_item_label">
                         <span>Stack documentation</span>
                     </span>
@@ -218,8 +242,9 @@ class Home extends Component {
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
                     <Link className="home_item" to="/bubble">
                         <Bubble
-                            root={generateLibTree()}
-                            valueProperty="loc"
+                            data={generateLibTree()}
+                            value="loc"
+                            labelSkipRadius={200}
                             transitionDuration={transitionDuration}
                             colors={colors}
                         />

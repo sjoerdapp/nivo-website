@@ -37,7 +37,7 @@ var config = {
     ,
     output: {
         // Assets destination
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '..', 'nivo-gh-pages'),
         // The final entry file is located in dist/js folder
         // The name variable will the key used in the entry index
         // The hash is optional, but usefull for having unique url for caching purpose
@@ -45,8 +45,9 @@ var config = {
 
         // require to make the specific fonts work (absolute path),
         // the value is also used by the WebpackDevServer to serve assets
-        publicPath: "/"
+        publicPath: process.env.NODE_ENV === 'production' ? '' : '/'
     },
+
     resolve: {
         fallback: [
             path.join(__dirname, 'src')
@@ -57,13 +58,6 @@ var config = {
             'react-dom': path.resolve('./node_modules/react-dom'),
         },
         modulesDirectories: ['node_modules']
-    },
-
-    resolve: {
-        alias: {
-            react:       path.resolve('./node_modules/react'),
-            'react-dom': path.resolve('./node_modules/react-dom'),
-        }
     },
 
     module: {
@@ -79,7 +73,7 @@ var config = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 include: path.join(__dirname, 'src'),
-                loaders: process.env.NODE_ENV == 'production' ?
+                loaders: process.env.NODE_ENV === 'production' ?
                     ['babel?presets[]=es2015&presets[]=react&presets[]=stage-0'] :
                     ['react-hot', 'babel?presets[]=es2015&presets[]=react&presets[]=stage-0']
             },
@@ -133,7 +127,7 @@ var config = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
         }),
-        new CleanPlugin(['dist'], __dirname)
+        //new CleanPlugin(['nivo-gh-pages'], path.join(__dirname, '..'))
     ]
 };
 
@@ -145,6 +139,7 @@ if ('development' === process.env.NODE_ENV) {
 }
 
 if ('production' === process.env.NODE_ENV) {
+    /*
     // reduce the final size of javascript files
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -154,6 +149,7 @@ if ('production' === process.env.NODE_ENV) {
             except: ['$super', '$', 'exports', 'require']
         }
     }));
+    */
 }
 
 // make the config available so webpack can grab the configuration

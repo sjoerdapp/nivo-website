@@ -23,11 +23,11 @@ class JsonData extends Component {
     }
 
     render() {
-        const { data, dataKey } = this.props;
-        const { show }          = this.state;
+        const { data } = this.props;
+        const { show } = this.state;
 
         let content = (
-            <span className="json-data_key">{dataKey}</span>
+            <span className="json-data_key">{'{data}'}</span>
         );
         if (show) {
             content = (

@@ -1,12 +1,13 @@
 require.context('./assets', true, /^\.\//);
 import './styles/index.styl';
-import React, { Component }                                from 'react';
-import { render }                                          from 'react-dom';
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
-import Nav                                                 from './components/nav/Nav';
-import MiniNav                                             from './components/nav/MiniNav';
-import Home                                                from './components/Home';
-import Header                                              from './components/Header';
+import React, { Component }                                  from 'react';
+import { render }                                            from 'react-dom';
+import { Router, Route, IndexRoute, Link, useRouterHistory } from 'react-router';
+import { createHashHistory }                                 from 'history';
+import Nav                                                   from './components/nav/Nav';
+import MiniNav                                               from './components/nav/MiniNav';
+import Home                                                  from './components/Home';
+import Header                                                from './components/Header';
 
 
 class App extends Component {
@@ -49,21 +50,16 @@ class App extends Component {
     }
 }
 
-/*
-import { TreeMapD3 as TM }   from 'nivo';
-import { generateLibTree } from './generators';
-
-render(
-    <TM width={360} height={240} root={generateLibTree()} colors="nivo" />,
-    document.getElementById('nivo')
-);
-*/
 
 import { getRoutes } from './SiteMap';
 
 
+const appHistory = useRouterHistory(createHashHistory)({
+    queryKey: false
+});
+
 render((
-    <Router history={browserHistory}>
+    <Router history={appHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
             {getRoutes()}

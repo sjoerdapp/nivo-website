@@ -5,12 +5,12 @@ import JsonData             from './JsonData';
 
 class ChartCodeAndData extends Component {
     render() {
-        const { code, dataKey, data } = this.props;
+        const { code, data } = this.props;
 
         return (
             <div>
                 <ChartCode code={code} />
-                {data && (<JsonData dataKey={`{${dataKey}}`} data={data} />)}
+                {data && (<JsonData data={data} />)}
             </div>
         );
     }

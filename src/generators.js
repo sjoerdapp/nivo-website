@@ -27,18 +27,21 @@ export const generateProgrammingLanguageStats = (shuffle = true, limit = -1) => 
     return stats;
 };
 
-export const generateSerie = () => {
+export const generateSerie = (length = 20) => {
     const data = [];
     const max  = 100 + Math.random() * (Math.random() * 600);
 
-    for (let i = 0; i < 19; i++) {
+    for (let i = 0; i < length; i++) {
         data.push(Math.round(Math.random() * max));
     }
 
     return data;
 };
 
-export const generateStackData = (size = 3) => d3.range(size).map(() => generateSerie().map((v, i) => ({ x: i, y: v })));
+export const generateStackData = (size = 3) => {
+    const length = 16;
+    return d3.range(size).map(() => generateSerie(length).map((v, i) => ({ x: i, y: v })));
+};
 
 
 export const generateCitiesPopulation = size => d3.range(size).map(() => ({
