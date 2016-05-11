@@ -12,6 +12,10 @@ const miniNavItems = [
         { className: 'bubble-placeholders', path: '/bubble/placeholders', label: '<BubblePlaceholders />' },
     ] },
     { className: 'pie',          path: '/pie',          label: '<Pie />'         },
+    { className: 'calendar',     path: '/calendar',     label: 'Calendar', children: [
+        { className: 'calendar-react', path: '/calendar/react', label: '<Calendar />' },
+        { className: 'calendar-d3', path: '/calendar/d3', label: '<CalendarD3 />' },
+    ] },
     { className: 'stack',        path: '/stack',        label: '<Stack />'       },
     { className: 'radial-stack', path: '/radial-stack', label: '<RadialStack />' },
     { className: 'treemap', path: '/treemap', label: 'TreeMap', children: [

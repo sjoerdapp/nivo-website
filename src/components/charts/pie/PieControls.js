@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../ChartControls';
-import InnerRadiusControl              from '../controls/InnerRadiusControl';
-import ColorsControl                   from '../controls/ColorsControl';
+import ChartControls                   from '../../ChartControls';
+import InnerRadiusControl              from '../../controls/InnerRadiusControl';
+import ColorsControl                   from '../../controls/ColorsControl';
 
 
 /**

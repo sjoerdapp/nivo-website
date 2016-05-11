@@ -44,6 +44,7 @@
     "immutable": "3.8.1",
     "nivo": "*",
     "react": "^15.0.1",
+    "react-colors-picker": "2.3.1",
     "react-dom": "15.0.1",
     "react-motion": "0.4.3",
     "react-responsive": "1.1.2",

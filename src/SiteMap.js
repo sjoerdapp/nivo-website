@@ -3,22 +3,25 @@ import _                                    from 'lodash';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 
-import Pie                    from './components/charts/Pie';
-import Stack                  from './components/charts/stack/Stack';
-import RadialStack            from './components/charts/RadialStack';
-import LineChart              from './components/charts/LineChartPage';
-import TreeMap                from './components/charts/treemap/TreeMap';
-import TreeMapD3              from './components/charts/treemap/TreeMapD3';
-import TreeMapPlaceholders    from './components/charts/treemap/TreeMapPlaceholders';
-import Bubble                 from './components/charts/bubble/Bubble';
-import BubbleD3               from './components/charts/bubble/BubbleD3';
-import BubbleReact            from './components/charts/bubble/BubbleReact';
-import BubblePlaceholders     from './components/charts/bubble/BubblePlaceholders';
-import Tree                   from './components/charts/Tree';
-import Colors                 from './components/ColorsPage';
-import Animations             from './components/AnimationsPage';
-import About                  from './components/About';
-import Features               from './components/Features';
+import Pie                 from './components/charts/pie/Pie';
+import Stack               from './components/charts/stack/Stack';
+import RadialStack         from './components/charts/RadialStack';
+import TreeMap             from './components/charts/treemap/TreeMap';
+import TreeMapD3           from './components/charts/treemap/TreeMapD3';
+import TreeMapPlaceholders from './components/charts/treemap/TreeMapPlaceholders';
+import Bubble              from './components/charts/bubble/Bubble';
+import BubbleD3            from './components/charts/bubble/BubbleD3';
+import BubbleReact         from './components/charts/bubble/BubbleReact';
+import BubblePlaceholders  from './components/charts/bubble/BubblePlaceholders';
+import Calendar            from './components/charts/calendar/Calendar';
+import CalendarReact       from './components/charts/calendar/CalendarReact';
+import CalendarD3          from './components/charts/calendar/CalendarD3';
+import CalendarCanvas      from './components/charts/calendar/CalendarCanvas';
+import Tree                from './components/charts/Tree';
+import Colors              from './components/ColorsPage';
+import Animations          from './components/AnimationsPage';
+import About               from './components/About';
+import Features            from './components/Features';
 
 
 const SITEMAP = [
@@ -49,6 +52,33 @@ const SITEMAP = [
                         path:      'placeholders',
                         label:     '<BubblePlaceholders />',
                         component: BubblePlaceholders
+                    },
+                ]
+            },
+            {
+                className: 'calendar',
+                path:      'calendar',
+                label:     'Calendar',
+                component: Calendar,
+                children:  [
+                    {
+                        className: 'calendar-react',
+                        path:      'react',
+                        label:     '<Calendar />',
+                        component: CalendarReact,
+                    },
+                    {
+                        className: 'calendar-d3',
+                        path:      'd3',
+                        label:     '<CalendarD3 />',
+                        component: CalendarD3,
+                        isIndex:   true,
+                    },
+                    {
+                        className: 'calendar-canvas',
+                        path:      'canvas',
+                        label:     '<CalendarCanvas />',
+                        component: CalendarCanvas,
                     },
                 ]
             },

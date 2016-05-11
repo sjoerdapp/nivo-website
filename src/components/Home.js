@@ -10,7 +10,7 @@ import {
 } from '../generators';
 import {
     Chart,
-    Pie,
+    ResponsivePie,
     PieColumnLegends,
     ResponsiveTreeMapD3 as TreeMap,
     Tree,
@@ -49,18 +49,17 @@ class Home extends Component {
                     </Link>
                 </MediaQuery>
                 <Link className="home_item" to="/pie">
-                    <Chart margin={{ top: 40, right: 120, bottom: 40, left: 120 }}>
-                        <Pie
-                            data={generateProgrammingLanguageStats(false, 7)}
-                            transitionDuration={transitionDuration}
-                            innerRadius={0.6} colors={colors}
-                        >
-                            <PieColumnLegends
-                                horizontalOffset={30} radiusOffset={20}
-                                lineColor="inherit" textColor="inherit"
-                            />
-                        </Pie>
-                    </Chart>
+                    <ResponsivePie
+                        margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
+                        data={generateProgrammingLanguageStats(false, 7)}
+                        transitionDuration={transitionDuration}
+                        innerRadius={0.6} colors={colors}
+                    >
+                        <PieColumnLegends
+                            horizontalOffset={30} radiusOffset={20}
+                            lineColor="inherit" textColor="inherit"
+                        />
+                    </ResponsivePie>
                     <span className="home_item_label">
                         <span>Pie documentation</span>
                     </span>
@@ -138,19 +137,18 @@ class Home extends Component {
                 </Link>
                 <MediaQuery query="(min-width: 1200px)" className="home_item">
                     <Link className="home_item" to="/pie">
-                        <Chart margin={{ top: 40, right: 120, bottom: 40, left: 120 }}>
-                            <Pie
-                                data={generateProgrammingLanguageStats(false, 7)}
-                                innerRadius={0}
-                                colors={colors}
-                                transitionDuration={transitionDuration}
-                            >
-                                <PieColumnLegends
-                                    horizontalOffset={30} radiusOffset={20}
-                                    lineColor="inherit" textColor="inherit"
-                                />
-                            </Pie>
-                        </Chart>
+                        <ResponsivePie
+                            margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
+                            data={generateProgrammingLanguageStats(false, 7)}
+                            innerRadius={0}
+                            colors={colors}
+                            transitionDuration={transitionDuration}
+                        >
+                            <PieColumnLegends
+                                horizontalOffset={30} radiusOffset={20}
+                                lineColor="inherit" textColor="inherit"
+                            />
+                        </ResponsivePie>
                         <span className="home_item_label">
                             <span>Pie documentation</span>
                         </span>
@@ -189,19 +187,18 @@ class Home extends Component {
                     </span>
                 </Link>
                 <Link className="home_item" to="/pie">
-                    <Chart margin={{ top: 40, right: 120, bottom: 40, left: 120 }}>
-                        <Pie
-                            data={generateProgrammingLanguageStats(false, 7)}
-                            innerRadius={0.4}
-                            transitionDuration={transitionDuration}
-                            colors={colors}
-                        >
-                            <PieColumnLegends
-                                horizontalOffset={30} radiusOffset={20}
-                                lineColor="inherit" textColor="inherit"
-                            />
-                        </Pie>
-                    </Chart>
+                    <ResponsivePie
+                        margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
+                        data={generateProgrammingLanguageStats(false, 7)}
+                        innerRadius={0.4}
+                        transitionDuration={transitionDuration}
+                        colors={colors}
+                    >
+                        <PieColumnLegends
+                            horizontalOffset={30} radiusOffset={20}
+                            lineColor="inherit" textColor="inherit"
+                        />
+                    </ResponsivePie>
                     <span className="home_item_label">
                         <span>Pie documentation</span>
                     </span>
@@ -221,19 +218,18 @@ class Home extends Component {
                 </MediaQuery>
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
                     <Link className="home_item" to="/pie">
-                        <Chart margin={{ top: 40, right: 120, bottom: 40, left: 120 }}>
-                            <Pie
-                                data={generateProgrammingLanguageStats(false, 7)}
-                                innerRadius={0.9}
-                                colors={colors}
-                                transitionDuration={transitionDuration}
-                            >
-                                <PieColumnLegends
-                                    horizontalOffset={30} radiusOffset={20}
-                                    lineColor="inherit" textColor="inherit"
-                                />
-                            </Pie>
-                        </Chart>
+                        <ResponsivePie
+                            margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
+                            data={generateProgrammingLanguageStats(false, 7)}
+                            innerRadius={0.9}
+                            colors={colors}
+                            transitionDuration={transitionDuration}
+                        >
+                            <PieColumnLegends
+                                horizontalOffset={30} radiusOffset={20}
+                                lineColor="inherit" textColor="inherit"
+                            />
+                        </ResponsivePie>
                         <span className="home_item_label">
                             <span>Pie documentation</span>
                         </span>
