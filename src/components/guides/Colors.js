@@ -1,8 +1,8 @@
 import React, { Component, PropTypes }      from 'react';
 import d3                                   from 'd3';
 import _                                    from 'lodash';
-import { generateProgrammingLanguageStats } from '../generators';
-import ChartCodeAndData                     from './ChartCodeAndData';
+import { generateProgrammingLanguageStats } from '../../generators';
+import ChartCodeAndData                     from '../ChartCodeAndData';
 import Nivo, {
     Chart,
     Pie,
@@ -17,7 +17,7 @@ const category20b = d3.scale.category20b().range();
 const category20c = d3.scale.category20c().range();
 
 
-class ColorsPage extends Component {
+class Colors extends Component {
     render() {
         const langs    = generateProgrammingLanguageStats(false, 3);
         const langsExt = generateProgrammingLanguageStats(false, 20);
@@ -212,4 +212,4 @@ class ColorsPage extends Component {
 }
 
 
-export default ColorsPage;
+export default Colors;

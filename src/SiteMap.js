@@ -18,8 +18,8 @@ import CalendarReact       from './components/charts/calendar/CalendarReact';
 import CalendarD3          from './components/charts/calendar/CalendarD3';
 import CalendarCanvas      from './components/charts/calendar/CalendarCanvas';
 import Tree                from './components/charts/Tree';
-import Colors              from './components/ColorsPage';
-import Animations          from './components/AnimationsPage';
+import Colors              from './components/guides/Colors';
+import Animation           from './components/guides/Animation';
 import About               from './components/About';
 import Features            from './components/Features';
 
@@ -139,10 +139,10 @@ const SITEMAP = [
                 component: Colors
             },
             {
-                className: 'animations',
-                path:      'guides/animations',
-                label:     'Animations',
-                component: Animations
+                className: 'animation',
+                path:      'guides/animation',
+                label:     'Animation',
+                component: Animation
             },
         ]
     },
