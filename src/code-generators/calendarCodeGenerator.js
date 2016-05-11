@@ -1,4 +1,4 @@
-const generateCalendarCode = ({
+export const generateCalendarD3Code = ({
     direction,
     yearSpacing, yearLegendOffset,
     daySpacing, dayBorderWidth, dayBorderColor,
@@ -6,10 +6,10 @@ const generateCalendarCode = ({
     transitionDuration, transitionEasing, transitionStaggering
 }) => {
     return `import { render }   from 'react-dom';
-import { Calendar } from 'nivo';
+import { CalendarD3 } from 'nivo';
 
 render((
-    <Calendar
+    <CalendarD3
         width={600} height={240}
         direction="${direction}"
         yearSpacing={${yearSpacing}} yearLegendOffset={${yearLegendOffset}}
@@ -21,4 +21,24 @@ render((
 };
 
 
-export default generateCalendarCode;
+export const generateCalendarCode = ({
+    direction,
+    yearSpacing, yearLegendOffset,
+    daySpacing, dayBorderWidth, dayBorderColor,
+    monthBorderWidth, monthBorderColor, monthLegendOffset,
+    motion, motionStiffness, motionDamping
+}) => {
+    return `import { render }   from 'react-dom';
+import { Calendar } from 'nivo';
+
+render((
+    <Calendar
+        width={600} height={240}
+        direction="${direction}"
+        yearSpacing={${yearSpacing}} yearLegendOffset={${yearLegendOffset}}
+        daySpacing={${daySpacing}} dayBorderWidth={${dayBorderWidth}} dayBorderColor="${dayBorderColor}"
+        monthBorderWidth={${monthBorderWidth}} monthBorderColor="${monthBorderColor}" monthLegendOffset={${monthLegendOffset}}
+        motion={${motion ? 'true' : 'false'}} motionStiffness={${motionStiffness}} motionDamping={${motionDamping}}
+    />
+), document.getElementById('chart'));`;
+};

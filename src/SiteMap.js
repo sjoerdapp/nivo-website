@@ -74,12 +74,13 @@ const SITEMAP = [
                         component: CalendarD3,
                         isIndex:   true,
                     },
-                    {
-                        className: 'calendar-canvas',
-                        path:      'canvas',
-                        label:     '<CalendarCanvas />',
-                        component: CalendarCanvas,
-                    },
+                    // too experimental :-/
+                    //{
+                    //    className: 'calendar-canvas',
+                    //    path:      'canvas',
+                    //    label:     '<CalendarCanvas />',
+                    //    component: CalendarCanvas,
+                    //},
                 ]
             },
             {

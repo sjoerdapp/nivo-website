@@ -5,7 +5,7 @@ import ChartHeader                          from '../../ChartHeader';
 import ChartCodeAndData                     from '../../ChartCodeAndData';
 import Properties                           from '../../Properties';
 import generateCalendarCode                 from '../../../code-generators/calendarCodeGenerator';
-import CalendarControls                     from './CalendarControls';
+import CalendarD3Controls                   from './CalendarD3Controls';
 import { ResponsiveCalendarCanvas }         from 'nivo';
 
 
@@ -55,7 +55,7 @@ class CalendarCanvasPage extends Component {
                                 >
                                 </ResponsiveCalendarCanvas>
                             </div>
-                            <CalendarControls
+                            <CalendarD3Controls
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />

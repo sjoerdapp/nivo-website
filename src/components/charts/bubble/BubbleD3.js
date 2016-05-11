@@ -54,8 +54,7 @@ class BubblePage extends Component {
                                     {...settings}
                                 />
                             </div>
-                            <p className="description">Use d3 for DOM mutation and transitions.</p>
-                            <p className="description">This chart offer various implementations, you can render it using <Link to="/bubble/d3">pure d3</Link> or <Link to="/bubble">let react handles all the rendering</Link> and you can even <Link to="/bubble/placeholders">render whatever you want</Link> instead of the boring circles.</p>
+                            <p className="description">This component use d3 for both layout computing and DOM mutations. It's not suitable for isomorphic rendering, if you need it, you should use the <Link to="/bubble/react">&lt;Bubble /&gt;</Link> component. This one performs better on transitions. If you want to completely customize your Bubble chart, have a look at the <Link to="/bubble/placeholders">&lt;BubblePlaceholders /&gt;</Link> component.</p>
                         </div>
                         <div className="grid_item grid_item-2_3">
                             <BubbleControls

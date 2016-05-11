@@ -5,9 +5,9 @@ import ChartControls                   from '../../ChartControls';
 
 
 /**
- * This component is used to configure a nivo Calendar chart.
+ * This component is used to configure a nivo CalendarD3 chart.
  */
-class CalendarControls extends Component {
+class CalendarD3Controls extends Component {
     constructor(props) {
         super(props);
 
@@ -82,7 +82,7 @@ class CalendarControls extends Component {
 
         return (
             <div>
-                <ChartControls chartClass="Calendar">
+                <ChartControls chartClass="CalendarD3">
                     <div className="chart-controls_item">
                         <label>
                             direction: <code className="code code-string">"{settings.direction}"</code>
@@ -188,10 +188,10 @@ class CalendarControls extends Component {
 
 const { object, func } = PropTypes;
 
-CalendarControls.propTypes = {
+CalendarD3Controls.propTypes = {
     settings:         object.isRequired,
     onSettingsUpdate: func.isRequired,
 };
 
 
-export default CalendarControls;
+export default CalendarD3Controls;

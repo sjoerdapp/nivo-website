@@ -19,6 +19,7 @@ import {
     StackSlicer,
     ResponsiveRadialStack as RadialStack,
     RadialStackAngleAxis,
+    ResponsiveCalendarD3,
     XYScales,
     AreaShape,
     LineShape,

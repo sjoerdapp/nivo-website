@@ -3,8 +3,8 @@ import { Link }                             from 'react-router';
 import ChartHeader                          from '../../ChartHeader';
 import ChartCodeAndData                     from '../../ChartCodeAndData';
 import Properties                           from '../../Properties';
-import generateCalendarCode                 from '../../../code-generators/calendarCodeGenerator';
-import CalendarControls                     from './CalendarControls';
+import { generateCalendarD3Code }           from '../../../code-generators/calendarCodeGenerator';
+import CalendarD3Controls                   from './CalendarD3Controls';
 import { ResponsiveCalendarD3 }             from 'nivo';
 
 
@@ -28,7 +28,7 @@ class CalendarD3Page extends Component {
                 monthLegendOffset:    6,
                 transitionDuration:   1200,
                 transitionEasing:     'elastic',
-                transitionStaggering: 4,
+                transitionStaggering: 3,
             },
         };
     }
@@ -40,7 +40,7 @@ class CalendarD3Page extends Component {
     render() {
         const { settings } = this.state;
 
-        const code = generateCalendarCode(settings);
+        const code = generateCalendarD3Code(settings);
 
         return (
             <div>
@@ -56,14 +56,15 @@ class CalendarD3Page extends Component {
                                 >
                                 </ResponsiveCalendarD3>
                             </div>
-                            <CalendarControls
+                            <CalendarD3Controls
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
                             <ChartCodeAndData code={code} data={[]} />
                         </div>
                         <div className="grid_item grid_item-1_3">
-                            <p>heavily inspired by <a href="https://bl.ocks.org/mbostock/4063318" target="_blank">this block</a>.</p>
+                            <p className="description">This component is heavily inspired by <a href="https://bl.ocks.org/mbostock/4063318" target="_blank">this block</a>.</p>
+                            <p className="description">This component renders the calendar using d3 for both computing and rendering. DOM mutations being handled by d3, it's not suitable for isomorphic rendering, if you want it or don't care about animation you can use the <Link to="/calendar/react">&lt;Calendar /&gt;</Link> component. However this one deals well enough with transitions, while the <Link to="/calendar/react">&lt;Calendar /&gt;</Link> supports transitions but you cannot have a wide time range and it doesn't allow transition staggering.</p>
                         </div>
                         <div className="grid_item grid_item-full">
                             <Properties
