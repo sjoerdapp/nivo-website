@@ -61,7 +61,7 @@ class Home extends Component {
                         </span>
                     </Link>
                 </MediaQuery>
-                <Link className="home_item" to="/pie">
+                <Link className="home_item" to="/">
                     {/*
                     <ResponsivePie
                         margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
@@ -81,7 +81,7 @@ class Home extends Component {
                     </span>
                     */}
                 </Link>
-                <Link className="home_item" to="/stack">
+                <Link className="home_item" to="/">
                     {/*
                     <ResponsiveStack
                         margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
@@ -123,7 +123,7 @@ class Home extends Component {
                     </Link>
                 </MediaQuery>
                 <MediaQuery query="(min-width: 1200px)" className="home_item">
-                    <Link className="home_item" to="/tree">
+                    <Link className="home_item" to="/">
                         {/*
                         <Tree
                             margin={{ top: 3, right: 6, bottom: 30, left: 6 }}
@@ -164,7 +164,7 @@ class Home extends Component {
                     </span>
                 </Link>
                 <MediaQuery query="(min-width: 1200px)" className="home_item">
-                    <Link className="home_item" to="/pie">
+                    <Link className="home_item" to="/">
                         {/*
                         <ResponsivePie
                             margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
@@ -186,7 +186,7 @@ class Home extends Component {
                          */}
                     </Link>
                 </MediaQuery>
-                <Link className="home_item" to="/radial-stack">
+                <Link className="home_item" to="/">
                     {/*
                     <RadialStack
                         innerRadius={0.4}
@@ -202,7 +202,7 @@ class Home extends Component {
                     </span>
                     */}
                 </Link>
-                <Link className="home_item" to="/stack">
+                <Link className="home_item" to="/">
                     {/*
                     <ResponsiveStack
                         margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
@@ -222,7 +222,7 @@ class Home extends Component {
                     </span>
                     */}
                 </Link>
-                <Link className="home_item" to="/calendar">
+                <Link className="home_item" to="/">
                     {/*
                     <ResponsiveCalendarD3
                         margin={{ top: 20, right: 2, bottom: 2, left: 20 }}

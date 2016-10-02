@@ -56,8 +56,9 @@ var config = {
             d3:          path.resolve('./node_modules/d3'),
             react:       path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
+            lodash:      path.resolve('./node_modules/lodash'),
         },
-        modulesDirectories: ['node_modules']
+        modulesDirectories: ['node_modules'],
     },
 
     module: {
@@ -108,10 +109,6 @@ var config = {
         ]
     },
     plugins: [
-        new webpack.BannerPlugin('This code is part of the nivo project', {
-            raw:       false,
-            entryOnly: false
-        }),
         new ExtractTextPlugin("css/[name]-[id]-[contenthash:8].css", {
             allChunks: true
         }),
@@ -119,7 +116,7 @@ var config = {
             inject:   true,
             title:    'nivo demo/docs',
             template: 'src/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
         }),
         new webpack.DefinePlugin({
             VERSION: JSON.stringify("0.0.1-DEV"),
@@ -127,52 +124,57 @@ var config = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
         }),
-        //new CleanPlugin(['nivo-gh-pages'], path.join(__dirname, '..'))
     ]
-};
-
-if ('development' === process.env.NODE_ENV) {
-    // define how assets will be available, the eval value is useful with the
-    // HotModuleReplacementPlugin to reload code on change
-    config.devtool = 'eval';
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
-if ('production' === process.env.NODE_ENV) {
-    /*
-    // reduce the final size of javascript files
+if ('development' === process.env.NODE_ENV) {
+    config.devtool = 'eval'
+    config.plugins.push(new webpack.HotModuleReplacementPlugin())
+} else if ('production' === process.env.NODE_ENV) {
+    config.devtool = 'cheap-module-source-map'
+    config.plugins.push(new CleanPlugin(path.join(__dirname, '..', 'nivo-gh-pages', 'js'), {
+        root: path.join(__dirname, '..'),
+    }))
+    config.plugins.push(new CleanPlugin(path.join(__dirname, '..', 'nivo-gh-pages', 'css'), {
+        root: path.join(__dirname, '..'),
+    }))
+    config.plugins.push(new CleanPlugin(path.join(__dirname, '..', 'nivo-gh-pages', 'fonts'), {
+        root: path.join(__dirname, '..'),
+    }))
+    config.plugins.push(new webpack.BannerPlugin('This code is part of the nivo project', {
+        raw:       false,
+        entryOnly: false,
+    }))
+    config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
+    config.plugins.push(new webpack.optimize.DedupePlugin())
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
-//            warning: false
-        },
-        mangle: { // default values
-            except: ['$super', '$', 'exports', 'require']
+            warnings: false,
         }
-    }));
-    */
+    }))
 }
 
 // make the config available so webpack can grab the configuration
-module.exports = config;
+module.exports = config
 
 // start the WebpackDevServer which handle hot reload
 // if called directly from node
 if (require.main === module && 'development' === process.env.NODE_ENV ) {
-    var server = new WebpackDevServer(webpack(config), {
+    const server = new WebpackDevServer(webpack(config), {
         publicPath:         config.output.publicPath,
         hot:                true,
         historyApiFallback: true,
         progress:           true,
-        stats: {
-            colors: true
+        stats:              {
+            colors: true,
         }
-    });
+    })
 
     server.listen(devserver.port, devserver.ip, function (err, result) {
         if (err) {
-            console.log(err);
+            console.log(err)
         }
 
-        console.log('Listening at http://'+devserver.ip+':'+devserver.port+'/webpack-dev-server/');
-    });
+        console.log('Listening at http://'+devserver.ip+':'+devserver.port+'/webpack-dev-server/')
+    })
 }
