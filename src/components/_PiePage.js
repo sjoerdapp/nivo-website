@@ -1,7 +1,7 @@
 import React, { Component, PropTypes }      from 'react';
 import _                                    from 'lodash';
 import { Link }                             from 'react-router';
-import { generateProgrammingLanguageStats } from '../generators';
+import { generateProgrammingLanguageStats } from 'nivo-generators';
 import PropsTable                           from './PropsTable';
 import ChartCode                            from './ChartCode';
 import {

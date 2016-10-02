@@ -1,20 +1,26 @@
-import React, { Component } from 'react';
-import ChartCode            from './ChartCode';
-import JsonData             from './JsonData';
+import React, { Component, PropTypes } from 'react';
+import ChartCode                       from './ChartCode';
+import JsonData                        from './JsonData';
 
 
 class ChartCodeAndData extends Component {
     render() {
-        const { code, data } = this.props;
+        const { code, data, onDataUpdate } = this.props;
 
         return (
             <div>
                 <ChartCode code={code} />
-                {data && (<JsonData data={data} />)}
+                {data && (<JsonData data={data} onDataUpdate={onDataUpdate} />)}
             </div>
         );
     }
 }
+
+const { func } = PropTypes;
+
+ChartCodeAndData.propTypes = {
+    onDataUpdate: func
+};
 
 
 export default ChartCodeAndData;

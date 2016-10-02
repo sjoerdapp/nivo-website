@@ -109,30 +109,57 @@
       &:before
         height 20px
 
+    &-line:before
+      background-image url('../assets/nivo-chart-icon-line-grey.png')
+    &-line.active:before
+      background-image url('../assets/nivo-chart-icon-line-red.png')
+
+    &-bars:before
+      background-image url('../assets/nivo-chart-icon-bars-grey.png')
+    &-bars.active:before
+      background-image url('../assets/nivo-chart-icon-bars-red.png')
+
     &-bubble:before
       background-image url('../assets/nivo-chart-icon-bubble-grey.png')
     &-bubble.active:before
       background-image url('../assets/nivo-chart-icon-bubble-red.png')
 
+    &-chord:before
+      background-image url('../assets/nivo-chart-icon-chord-grey.png')
+    &-chord.active:before
+      background-image url('../assets/nivo-chart-icon-chord-red.png')
+
+    &-bars-react:before,
+    &-line-react:before,
     &-bubble-react:before,
+    &-treemap-react:before,
+    &-chord-react:before,
     &-calendar-react:before
       background-image url('../assets/react-logo-grey.png')
+    &-bars-react.active:before,
+    &-line-react.active:before,
     &-bubble-react.active:before,
+    &-treemap-react.active:before,
+    &-chord-react.active:before,
     &-calendar-react.active:before
       background-image url('../assets/react-logo-red.png')
 
+    &-bars-d3:before,
     &-bubble-d3:before,
     &-calendar-d3:before,
     &-treemap-d3:before
       background-image url('../assets/d3-logo-grey.png')
+    &-bars-d3.active:before,
     &-bubble-d3.active:before,
     &-calendar-d3.active:before,
     &-treemap-d3.active:before
       background-image url('../assets/d3-logo-red.png')
 
+    &-bars-placeholders:before,
     &-bubble-placeholders:before,
     &-treemap-placeholders:before
       background-image url('../assets/nivo-chart-icon-bubble-placeholders-grey.png')
+    &-bars-placeholders.active:before,
     &-bubble-placeholders.active:before,
     &-treemap-placeholders.active:before
       background-image url('../assets/nivo-chart-icon-bubble-placeholders-red.png')

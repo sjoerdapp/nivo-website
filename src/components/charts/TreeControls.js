@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../ChartControls';
+import CollapsibleCard                 from '../CollapsibleCard';
 import LabelPositionControl            from '../controls/LabelPositionControl';
 import ColorsControl                   from '../controls/ColorsControl';
 
@@ -47,8 +47,8 @@ class TreeControls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="Tree">
+            <CollapsibleCard title="<Tree /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="grid_item grid_item-1_2">
                         direction&nbsp;
                         <div className="control-help">Tree direction.</div>
@@ -95,8 +95,8 @@ class TreeControls extends Component {
                             onChange={this.handleLeafLabelPositionUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

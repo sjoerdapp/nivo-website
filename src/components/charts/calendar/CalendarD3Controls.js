@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
 import ColorPicker                     from 'react-colors-picker';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 
 
 /**
@@ -81,8 +81,8 @@ class CalendarD3Controls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="CalendarD3">
+            <CollapsibleCard title="<CalendarD3 /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <label>
                             direction: <code className="code code-string">"{settings.direction}"</code>
@@ -180,8 +180,8 @@ class CalendarD3Controls extends Component {
                             onChange={this.handleTransitionStaggeringUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

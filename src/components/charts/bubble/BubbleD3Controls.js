@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 import ColorsControl                   from '../../controls/ColorsControl';
 import ColorControl                    from '../../controls/ColorControl';
 
@@ -92,8 +92,8 @@ class BubbleD3Controls extends Component {
         */
 
         return (
-            <div>
-                <ChartControls chartClass="Bubble">
+            <CollapsibleCard title="<BubbleD3 /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <label>
                             padding: <code className="code code-number">{settings.padding}</code>
@@ -112,7 +112,7 @@ class BubbleD3Controls extends Component {
                             onChange={this.handleColorsUpdate}
                         />
                     </div>
-                </ChartControls>
+                </div>
                 <ChartControls chartClass="BubbleLegends">
                     <div className="chart-controls_item">
                         <label>
@@ -135,7 +135,7 @@ class BubbleD3Controls extends Component {
                         />
                     </div>
                 </ChartControls>
-            </div>
+            </CollapsibleCard>
         );
     }
 }

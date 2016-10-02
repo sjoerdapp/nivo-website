@@ -1,11 +1,11 @@
-import React, { Component, PropTypes }      from 'react';
-import { Link }                             from 'react-router';
-import ChartHeader                          from '../../ChartHeader';
-import ChartCodeAndData                     from '../../ChartCodeAndData';
-import Properties                           from '../../Properties';
-import { generateCalendarD3Code }           from '../../../code-generators/calendarCodeGenerator';
-import CalendarD3Controls                   from './CalendarD3Controls';
-import { ResponsiveCalendarD3 }             from 'nivo';
+import React, { Component, PropTypes } from 'react';
+import { Link }                        from 'react-router';
+import ChartHeader                     from '../../ChartHeader';
+import ChartCodeAndData                from '../../ChartCodeAndData';
+import Properties                      from '../../Properties';
+import { generateCalendarD3Code }      from '../../../code-generators/calendarCodeGenerator';
+import CalendarD3Controls              from './CalendarD3Controls';
+import { ResponsiveCalendarD3 }        from 'nivo';
 
 
 class CalendarD3Page extends Component {
@@ -22,13 +22,13 @@ class CalendarD3Page extends Component {
                 yearLegendOffset:     10,
                 daySpacing:           0,
                 dayBorderWidth:       1,
-                dayBorderColor:       '#fff',
-                monthBorderWidth:     2,
-                monthBorderColor:     '#fff',
-                monthLegendOffset:    6,
+                dayBorderColor:       '#000',
+                monthBorderWidth:     3,
+                monthBorderColor:     '#000',
+                monthLegendOffset:    10,
                 transitionDuration:   1200,
                 transitionEasing:     'elastic',
-                transitionStaggering: 3,
+                transitionStaggering: 4,
             },
         };
     }
@@ -38,20 +38,28 @@ class CalendarD3Page extends Component {
     }
 
     render() {
-        const { settings } = this.state;
+        const { from, to, data } = this.props;
+        const { settings }       = this.state;
 
         const code = generateCalendarD3Code(settings);
 
         return (
             <div>
-                <ChartHeader chartClass="CalendarD3" tags={['calendar', 'd3']} />
+                <ChartHeader chartClass="CalendarD3" tags={['calendar', 'd3']} chartSize={1} />
                 <div className="page_content">
                     <div className="grid">
                         <div className="grid_item grid_item-2_3">
                             <div className="main-chart" style={{ height: '500px' }}>
                                 <ResponsiveCalendarD3
                                     margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
-                                    from={new Date(2014, 3, 1)} to={new Date(2016, 7, 12)}
+                                    from={from} to={to}
+                                    data={data}
+                                    onDayClick={(d) => console.log(d)}
+                                    colorScale={{
+                                        type:   'linear',
+                                        domain: [0,         80,        160,       240,       320,       400],
+                                        range:  ['#e8c1a0', '#f47560', '#f1e15b', '#e8a838', '#61cdbb', '#97e3d5']
+                                    }}
                                     {...settings}
                                 >
                                 </ResponsiveCalendarD3>
@@ -60,7 +68,7 @@ class CalendarD3Page extends Component {
                                 settings={settings}
                                 onSettingsUpdate={this.handleSettingsUpdate}
                             />
-                            <ChartCodeAndData code={code} data={[]} />
+                            <ChartCodeAndData code={code} data={data} />
                         </div>
                         <div className="grid_item grid_item-1_3">
                             <p className="description">This component is heavily inspired by <a href="https://bl.ocks.org/mbostock/4063318" target="_blank">this block</a>.</p>
@@ -70,8 +78,14 @@ class CalendarD3Page extends Component {
                             <Properties
                                 chartClass="CalendarD3"
                                 properties={[
-                                    ['width', 'number', true, '', ''],
-                                    ['height', 'number', true, '', ''],
+                                    ['width', 'number', true, '', (
+                                        <span>not required for <code>&lt;ResponsiveCalendarD3&nbsp;/&gt;</code>.</span>
+                                    )],
+                                    ['height', 'number', true, '', (
+                                        <span>not required for <code>&lt;ResponsiveCalendarD3&nbsp;/&gt;</code>.</span>
+                                    )],
+                                    ['data', 'array', true, '', ''],
+                                    ['onDayClick', 'function', true, (<code>() => {}</code>), 'click handler for calendar days.'],
                                     ['direction', 'string', true, (<code className="code-string">"horizontal"</code>), (
                                         <span>
                                             defines calendar layout direction, must be one of <code className="code-string">"horizontal"</code> or <code className="code-string">"vertical"</code>

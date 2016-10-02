@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
 import ColorPicker                     from 'react-colors-picker';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 
 
 /**
@@ -81,8 +81,8 @@ class CalendarReactControls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="Calendar">
+            <CollapsibleCard title="<Calendar /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <span className="control-switch">
                             <input
@@ -183,8 +183,8 @@ class CalendarReactControls extends Component {
                             monthBorderColor
                         </label>
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

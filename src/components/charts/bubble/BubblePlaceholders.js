@@ -1,39 +1,39 @@
-import React, { Component, PropTypes }    from 'react';
-import _                                  from 'lodash';
-import { Link }                           from 'react-router';
-import { ResponsiveBubblePlaceholders }   from 'nivo';
-import ChartHeader                        from '../../ChartHeader';
-import ChartCodeAndData                   from '../../ChartCodeAndData';
-import Properties                         from '../../Properties';
-import { generateBubblePlaceholdersCode } from '../../../code-generators/bubbleCodeGenerator';
-import BubblePlaceholdersControls         from './BubblePlaceholdersControls';
+import React, { Component, PropTypes }    from 'react'
+import _                                  from 'lodash'
+import { Link }                           from 'react-router'
+import { ResponsiveBubblePlaceholders }   from 'nivo'
+import ChartHeader                        from '../../ChartHeader'
+import ChartCodeAndData                   from '../../ChartCodeAndData'
+import Properties                         from '../../Properties'
+import { generateBubblePlaceholdersCode } from '../../../code-generators/bubbleCodeGenerator'
+import BubbleControls                     from './BubbleControls'
 
 
 class BubblePlaceholdersPage extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this);
+        this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this)
 
         this.state = {
             settings: {
                 padding:         1,
                 colors:          'nivo',
                 motionStiffness: 120,
-                motionDamping:   10
+                motionDamping:   10,
             }
-        };
+        }
     }
 
     handleSettingsUpdate(settings) {
-        this.setState({ settings });
+        this.setState({ settings })
     }
 
     render() {
-        const { root }     = this.props;
-        const { settings } = this.state;
+        const { root }     = this.props
+        const { settings } = this.state
 
-        const code = generateBubblePlaceholdersCode(settings);
+        const code = generateBubblePlaceholdersCode(settings)
 
         return (
             <div>
@@ -44,8 +44,9 @@ class BubblePlaceholdersPage extends Component {
                             <div className="main-chart">
                                 <ResponsiveBubblePlaceholders
                                     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                                    data={_.cloneDeep(root)}
+                                    root={_.cloneDeep(root)}
                                     namespace="html"
+                                    identity="name"
                                     value="loc"
                                     {...settings}
                                 >
@@ -73,7 +74,8 @@ class BubblePlaceholdersPage extends Component {
                             <p className="description">This chart offer various implementations, you can render it using <Link to="/bubble/d3">pure d3</Link> or <Link to="/bubble">let react handles all the rendering</Link> and you can even <Link to="/bubble/placeholders">render whatever you want</Link> instead of the boring circles.</p>
                         </div>
                         <div className="grid_item grid_item-2_3">
-                            <BubblePlaceholdersControls
+                            <BubbleControls
+                                target="BubblePlaceholders"
                                 settings={settings}
                                 onChange={this.handleSettingsUpdate}
                             />
@@ -85,7 +87,7 @@ class BubblePlaceholdersPage extends Component {
                                 properties={[
                                     'width',
                                     'height',
-                                    ['data', 'object', true, '', 'data.'],
+                                    ['root', 'object', true, '', 'the hierarchical data object.'],
                                     ['value', 'string|function', true, (<code className="code-string">"value"</code>), (
                                         <span>
                                             define value accessor, if string given, will use <code>datum[value]</code>,<br/>if function given, it will be invoked for each node and will receive the node as first argument, it must the node value.
@@ -104,6 +106,7 @@ class BubblePlaceholdersPage extends Component {
                                             colors used to colorize the circles, <Link to="/guides/colors">see dedicated documentation</Link>.
                                         </span>
                                     )],
+                                    'animate',
                                     'motionStiffness',
                                     'motionDamping',
                                 ]}

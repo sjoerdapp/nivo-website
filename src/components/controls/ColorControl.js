@@ -84,22 +84,22 @@ class ColorControl extends Component {
                     </div>
                 )}
             </div>
-        );
+        )
     }
 }
 
-const { string, func, node } = PropTypes;
+const { string, func, node } = PropTypes
 
 ColorControl.propTypes = {
     label:    string.isRequired,
     help:     node.isRequired,
-    onChange: func.isRequired
+    onChange: func.isRequired,
 };
 
 ColorControl.defaultProps = {
     label: 'color',
-    help:  'Color directive.'
-};
+    help:  'Color directive.',
+}
 
 
-export default ColorControl;
+export default ColorControl

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
 import { Link }                        from 'react-router';
 import { Tree }                        from 'nivo';
-import { generateLibTree }             from '../../generators';
+import { generateLibTree }             from 'nivo-generators';
 import ChartHeader                     from '../ChartHeader';
 import ChartCodeAndData                from '../ChartCodeAndData';
 import Properties                      from '../Properties';

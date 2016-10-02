@@ -2,7 +2,7 @@ import React, { Component, PropTypes }  from 'react';
 import _                                from 'lodash';
 import { Link }                         from 'react-router';
 import { ResponsiveStack, StackSlicer } from 'nivo';
-import { generateStackData }            from '../../../generators';
+import { generateStackData }            from 'nivo-generators';
 import ChartHeader                      from '../../ChartHeader';
 import ChartCodeAndData                 from '../../ChartCodeAndData';
 import Properties                       from '../../Properties';
@@ -60,12 +60,9 @@ class StackPage extends Component {
 
         const code = generateStackCode(stackSettings, stackSlicerSettings);
 
-        //transitionDuration={1200} transitionEasing="elastic"
-        //
-
         return (
             <div>
-                <ChartHeader chartClass="Stack" tags={['stack']} />
+                <ChartHeader chartClass="Stack" tags={['stack']} chartSize={1} />
                 <span className="dice-roll" onClick={this.handleDiceRoll}>roll the dices</span>
                 <div className="page_content">
                     <div className="grid">

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { generateCitiesPopulation }    from '../../generators';
+import { generateCitiesPopulation }    from 'nivo-generators';
 import ChartHeader                     from '../ChartHeader';
 import JsonData                        from '../JsonData';
 import {

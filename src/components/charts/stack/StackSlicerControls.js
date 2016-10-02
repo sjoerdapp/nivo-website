@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 import ColorControl                    from '../../controls/ColorControl';
 
 
@@ -64,8 +64,8 @@ class StackSlicerControls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="StackSlicer">
+            <CollapsibleCard title="<StackSlicer /> settings">
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <span className="control-switch">
                             <input
@@ -141,8 +141,8 @@ class StackSlicerControls extends Component {
                             onChange={this.handleLineColorUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

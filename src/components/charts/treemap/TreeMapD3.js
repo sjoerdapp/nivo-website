@@ -17,72 +17,25 @@ class TreeMapD3 extends Component {
 
         this.state = {
             settings: {
-                mode:         'squarify',
+                tile:         'squarify',
                 orientLabels: false,
-                padding:      0,
+                innerPadding: 0,
+                outerPadding: 0,
                 skipVMin:     0,
                 colors:       'nivo',
             }
-        };
+        }
     }
 
     handleSettingsUpdate(settings) {
-        this.setState({ settings });
+        this.setState({ settings })
     }
 
     render() {
-        const { root }     = this.props;
-        const { settings } = this.state;
+        const { root }     = this.props
+        const { settings } = this.state
 
-        /*
-        <div className="grid">
-            <ChartCode snippetId="treemap" dataKey="root" data={_.cloneDeep(libTree)} />
-            <div className="grid_item">
-                <h3>'slice' mode</h3>
-                <p className="description">Horizontal subdivision.</p>
-                <div className="chart" style={{ height: '120px' }}>
-                    <TreeMap
-                        root={_.cloneDeep(libTree)}
-                        valueAccessor={d => d.loc}
-                        labelFn={() => ''}
-                        mode="slice"
-                        borderColor="inherit:darker(1)"
-                        colors="nivo"
-                    />
-                </div>
-            </div>
-            <div className="grid_item">
-                <h3>'dice' mode</h3>
-                <p className="description">Vertical subdivision.</p>
-                <div className="chart" style={{ height: '120px' }}>
-                    <TreeMap
-                        root={_.cloneDeep(libTree)}
-                        valueAccessor={d => d.loc}
-                        labelFn={() => ''}
-                        mode="dice"
-                        borderColor="inherit:darker(1)"
-                        colors="nivo"
-                    />
-                </div>
-            </div>
-            <div className="grid_item grid_item-full">
-                <h3>'slice-dice' mode</h3>
-                <p className="description">Alternating between horizontal and vertical subdivision.</p>
-                <div className="chart" style={{ height: '120px' }}>
-                    <TreeMap
-                        root={_.cloneDeep(libTree)}
-                        valueAccessor={d => d.loc}
-                        labelFn={() => ''}
-                        mode="slice-dice"
-                        borderColor="inherit:darker(1)"
-                        colors="nivo"
-                    />
-                </div>
-            </div>
-        </div>
-         */
-
-        const code = generateTreeMapD3Code(settings);
+        const code = generateTreeMapD3Code(settings)
 
         return (
             <div>
@@ -99,7 +52,7 @@ class TreeMapD3 extends Component {
                                     {...settings}
                                 />
                             </div>
-                            <p className="description">Use <a href="https://github.com/mbostock/d3/wiki/Treemap-Layout" target="_blank">d3 Treemap layout</a>, see <a href="https://bl.ocks.org/mbostock/4063582" target="_blank">this block</a>.</p>
+                            <p className="description">Use <a href="https://github.com/d3/d3-hierarchy#treemap" target="_blank">d3-hierarchy.treemap</a>, see <a href="http://bl.ocks.org/mbostock/6bbb0a7ff7686b124d80" target="_blank">this block</a>.</p>
                             <p className="description">Use d3 for DOM mutation and transitions.</p>
                         </div>
                         <div className="grid_item grid_item-2_3">
@@ -133,9 +86,9 @@ class TreeMapD3 extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 
-export default TreeMapD3;
+export default TreeMapD3

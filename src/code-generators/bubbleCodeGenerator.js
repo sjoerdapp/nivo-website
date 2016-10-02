@@ -1,17 +1,36 @@
-export const generateBubbleCode = ({ padding, colors, borderWidth, borderColor, labelSkipRadius, labelTextColor }) => {
-    return `import { render } from 'react-dom';
-import { Bubble } from 'nivo';
+export const generateBubbleCode = ({
+    padding,
+    identity,
+    value,
+    colors,
+    borderWidth,
+    borderColor,
+    enableLabel,
+    label,
+    labelSkipRadius,
+    labelTextColor,
+}) => {
+    return `import { render } from 'react-dom'
+import { Bubble } from 'nivo'
 
 render((
     <Bubble
-        width={400} height={400}
-        data={data} value="loc"
-        padding={${padding}} colors="${colors}"
-        borderWidth={${borderWidth}} borderColor="${borderColor}"
-        label="name" labelSkipRadius={${labelSkipRadius}} labelTextColor="${labelTextColor}"
+        width={400}
+        height={400}
+        root={data}
+        identity="${identity}"
+        value="${value}"
+        padding={${padding}}
+        colors="${colors}"
+        borderWidth={${borderWidth}}
+        borderColor="${borderColor}"
+        enableLabel={${enableLabel ? 'true' : 'false'}}
+        label="${label}"
+        labelSkipRadius={${labelSkipRadius}}
+        labelTextColor="${labelTextColor}"
     />
-), document.getElementById('chart'));`;
-};
+), document.getElementById('chart'))`
+}
 
 
 export const generateBubbleD3Code = ({ padding, colors, borderWidth, borderColor, labelSkipRadius, labelTextColor }) => {

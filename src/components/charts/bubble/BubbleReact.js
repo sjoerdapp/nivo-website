@@ -1,44 +1,48 @@
-import React, { Component, PropTypes } from 'react';
-import _                               from 'lodash';
-import { Link }                        from 'react-router';
-import { ResponsiveBubble }            from 'nivo';
-import ChartHeader                     from '../../ChartHeader';
-import ChartCodeAndData                from '../../ChartCodeAndData';
-import Properties                      from '../../Properties';
-import { generateBubbleCode }          from '../../../code-generators/bubbleCodeGenerator';
-import BubbleControls                  from './BubbleControls';
+import React, { Component, PropTypes } from 'react'
+import _                               from 'lodash'
+import { Link }                        from 'react-router'
+import { ResponsiveBubble }            from 'nivo'
+import ChartHeader                     from '../../ChartHeader'
+import ChartCodeAndData                from '../../ChartCodeAndData'
+import Properties                      from '../../Properties'
+import { generateBubbleCode }          from '../../../code-generators/bubbleCodeGenerator'
+import BubbleControls                  from './BubbleControls'
 
 
 class BubbleReact extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this);
+        this.handleSettingsUpdate = this.handleSettingsUpdate.bind(this)
 
         this.state = {
             settings: {
+                identity:        'name',
+                value:           'loc',
                 colors:          'nivo',
                 padding:         1,
-                labelSkipRadius: 18,
+                enableLabel:     true,
+                label:           'name',
+                labelSkipRadius: 8,
                 labelTextColor:  'inherit:darker(.8)',
                 labelTextDY:     4,
                 borderWidth:     0,
                 borderColor:     'inherit:darker(.3)',
                 motionStiffness: 120,
-                motionDamping:   10
+                motionDamping:   10,
             }
-        };
+        }
     }
 
     handleSettingsUpdate(settings) {
-        this.setState({ settings });
+        this.setState({ settings })
     }
 
     render() {
-        const { root }     = this.props;
-        const { settings } = this.state;
+        const { root }     = this.props
+        const { settings } = this.state
 
-        const code = generateBubbleCode(settings);
+        const code = generateBubbleCode(settings)
 
         return (
             <div>
@@ -49,9 +53,10 @@ class BubbleReact extends Component {
                             <div className="main-chart">
                                 <ResponsiveBubble
                                     margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-                                    data={_.cloneDeep(root)}
-                                    value="loc"
-                                    label="name"
+                                    root={_.cloneDeep(root)}
+                                    identity={settings.identity}
+                                    value={settings.value}
+                                    label={settings.label}
                                     {...settings}
                                 >
                                 </ResponsiveBubble>
@@ -63,6 +68,7 @@ class BubbleReact extends Component {
                         </div>
                         <div className="grid_item grid_item-2_3">
                             <BubbleControls
+                                target="Bubble"
                                 settings={settings}
                                 onChange={this.handleSettingsUpdate}
                             />
@@ -74,7 +80,7 @@ class BubbleReact extends Component {
                                 properties={[
                                     'width',
                                     'height',
-                                    ['data', 'object', true, '', 'data.'],
+                                    ['root', 'object', true, '', 'the hierarchical data object.'],
                                     ['value', 'string|function', true, (<code className="code-string">"value"</code>), (
                                         <span>
                                             define value accessor, if string given, will use <code>datum[value]</code>,<br/>if function given, it will be invoked for each node and will receive the node as first argument, it must the node value.
@@ -94,6 +100,7 @@ class BubbleReact extends Component {
                                             how to compute border color, <Link to="/guides/colors">see dedicated documentation</Link>.
                                         </span>
                                     )],
+                                    ['enableLabel', 'boolean', true, (<code>true</code>), 'enable/disable label display'],
                                     ['label', 'string', true, (<code className="code-string">"name"</code>), ''],
                                     ['labelFormat', 'string', false, '', (
                                         <span>
@@ -111,6 +118,7 @@ class BubbleReact extends Component {
                                             label y offset, used to vertically center text.
                                         </span>
                                     )],
+                                    'animate',
                                     'motionStiffness',
                                     'motionDamping',
                                 ]}
@@ -119,9 +127,9 @@ class BubbleReact extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 
-export default BubbleReact;
+export default BubbleReact

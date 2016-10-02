@@ -1,4 +1,4 @@
-export const generateTreeMapD3Code = ({ mode, orientLabels, padding, skipVMin }) => {
+export const generateTreeMapD3Code = ({ tile, orientLabels, innerPadding, outerPadding, skipVMin }) => {
     return `import { render }    from 'react-dom';
 import { TreeMapD3 } from 'nivo';
 
@@ -9,15 +9,18 @@ render(
         width={360} height={240}
         root={root}
         valueProperty="loc"
-        mode="${mode}" orientLabels={${orientLabels ? 'true' : 'false'}}
-        padding={${padding}} skipVMin={${skipVMin}}
+        tile="${tile}"
+        orientLabels={${orientLabels ? 'true' : 'false'}}
+        innerPadding={${innerPadding}}
+        outerPadding={${outerPadding}}
+        skipVMin={${skipVMin}}
     />,
     document.getElementById('chart')
 );`;
 };
 
 
-export const generateTreeMapPlaceholdersCode = ({ mode, padding }) => {
+export const generateTreeMapPlaceholdersCode = ({ tile, innerPadding, outerPadding }) => {
     return `import { render }              from 'react-dom';
 import { TreeMapPlaceholders } from 'nivo';
 
@@ -27,7 +30,9 @@ render(
     <TreeMapPlaceholders
         root={root}
         valueProperty="loc"
-        mode="${mode}" padding={${padding}}
+        tile="${tile}"
+        innerPadding={${innerPadding}}
+        outerPadding={${outerPadding}}
     >
         {nodes => nodes.map(node => (
             <div

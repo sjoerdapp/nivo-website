@@ -15,6 +15,7 @@ $header-bottom-offset = 130px
 @require 'grid.styl'
 @require 'nav.styl'
 @require 'mini-nav.styl'
+@require 'card.styl'
 @require 'properties.styl'
 @require 'table.styl'
 @require 'header.styl'
@@ -66,8 +67,8 @@ code,
   &-string
     color $code-string-color
 
-svg
-  shape-rendering optimizeSpeed // auto
+//svg
+//  shape-rendering optimizeSpeed // auto
 
 #nivo
   width  100%
@@ -119,12 +120,11 @@ pre
 
 .code-snippet,
 .chart_code
-  margin-top 30px
   position relative
   padding 7px 12px
   font-size 14px
   background $code-background-color
-  color      $code-text-color
+  color      #ddd//$code-text-color
 
   &_label
     position absolute
@@ -144,44 +144,18 @@ pre
   position relative
   min-height 32px
   margin 0 0 15px
-  border-top 1px solid darken($code-background-color, 5)
   background $code-background-color
-  color      $code-text-color
+  color      #ddd//$code-text-color
 
-  &_toggle
-    display block
-    position absolute
-    top   0
-    right 0
-    height 32px
-    background $button-background-color
-    color $code-background-color
-    padding 6px 12px
+  &_json textarea
+    width 100%
     font-size 14px
-    cursor pointer
-    border-radius 0
+    height 300px
+    padding 7px 12px
     font-family Consolas, monospace
-
-  &_key
-    height 32px
-    font-size 14px
-    display inline-block
-    padding 6px 0
-    margin-left 12px
-    font-family Consolas, monospace
-
-  &_json
-    font-size 14px
-    max-height 300px
-    padding 0 15px
-    overflow auto
-    font-family Consolas, monospace
-
-  &._show
-    .json-data_toggle
-      top   12px
-      right 12px
-      border-radius 2px
+    background $code-background-color
+    color      #ddd//$code-text-color
+    border-width 0
 
 .component_meta
   //margin 0 $content-margin 25px 0

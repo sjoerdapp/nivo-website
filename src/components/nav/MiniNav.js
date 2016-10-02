@@ -6,23 +6,36 @@ import MiniNavLink                  from './MiniNavLink';
 
 
 const miniNavItems = [
+    { className: 'bars', path: '/bars', label: 'Bars', children: [
+        { className: 'bars-react',        path: '/bars/react',        label: '<Bars />'             },
+        //{ className: 'bars-placeholders', path: '/bars/placeholders', label: '<BarsPlaceholders />' },
+    ] },
+    { className: 'line', path: '/line', label: 'Line', children: [
+        { className: 'line-react', path: '/line/react', label: '<Line />' },
+    ] },
     { className: 'bubble', path: '/bubble', label: 'Bubble', children: [
-        { className: 'bubble-react', path: '/bubble/react', label: '<Bubble />' },
-        { className: 'bubble-d3', path: '/bubble/d3', label: '<BubbleD3 />' },
+        { className: 'bubble-react',        path: '/bubble/react',        label: '<Bubble />' },
         { className: 'bubble-placeholders', path: '/bubble/placeholders', label: '<BubblePlaceholders />' },
     ] },
-    { className: 'pie',          path: '/pie',          label: '<Pie />'         },
+    /*
     { className: 'calendar',     path: '/calendar',     label: 'Calendar', children: [
         { className: 'calendar-react', path: '/calendar/react', label: '<Calendar />' },
         { className: 'calendar-d3', path: '/calendar/d3', label: '<CalendarD3 />' },
     ] },
-    { className: 'stack',        path: '/stack',        label: '<Stack />'       },
+    { className: 'pie',          path: '/pie',          label: '<Pie />'         },
     { className: 'radial-stack', path: '/radial-stack', label: '<RadialStack />' },
+    { className: 'stack',        path: '/stack',        label: '<Stack />'       },
+    { className: 'tree',         path: '/tree',         label: '<Tree />'        },
+    */
     { className: 'treemap', path: '/treemap', label: 'TreeMap', children: [
-        { className: 'treemap-d3', path: '/treemap/d3', label: '<TreeMapD3 />' },
+        { className: 'treemap-react',        path: '/treemap/react',        label: '<TreeMap />'             },
+        //{ className: 'treemap-d3',           path: '/treemap/d3',           label: '<TreeMapD3 />'           },
         { className: 'treemap-placeholders', path: '/treemap/placeholders', label: '<TreeMapPlaceholders />' },
     ] },
-    { className: 'tree',         path: '/tree',         label: '<Tree />'        },
+    { className: 'chord', path: '/chord', label: 'Chord', children: [
+        { className: 'chord-react', path: '/chord/react', label: '<Chord />' },
+    ] },
+    { className: 'colors', path: '/guides/colors', label: 'Colors' },
 ].map((item, i) => {
     item.index = i;
     item.absIndex = i;

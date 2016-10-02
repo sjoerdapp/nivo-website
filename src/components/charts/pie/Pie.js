@@ -1,7 +1,7 @@
 import React, { Component, PropTypes }      from 'react';
 import _                                    from 'lodash';
 import { Link }                             from 'react-router';
-import { generateProgrammingLanguageStats } from '../../../generators';
+import { generateProgrammingLanguageStats } from 'nivo-generators';
 import ChartHeader                          from '../../ChartHeader';
 import ChartCodeAndData                     from '../../ChartCodeAndData';
 import Properties                           from '../../Properties';
@@ -41,7 +41,11 @@ class PiePage extends Component {
     }
 
     handleDiceRoll() {
-        this.setState({ data: generateProgrammingLanguageStats(true, 3) });
+        const data = generateProgrammingLanguageStats(true, 3).map(({ label, value }) => ({
+            id: label, label, value
+        }));
+
+        this.setState({ data });
     }
 
     handleSettingsUpdate(settings) {
@@ -62,16 +66,6 @@ class PiePage extends Component {
         const code = generatePieCode(settings);
 
         /*
-         <PieColumnLegends
-         lineColor="inherit:darker(.7)"
-         badgeColor="inherit:darker(.7)"
-         textColor="inherit:brighter(.3)"
-         />
-         <PieSliceLegends
-         labelFn={d => d.data.label}
-         {...sliceLegendsSettings}
-         />
-
          */
 
         return (
@@ -83,12 +77,20 @@ class PiePage extends Component {
                         <div className="grid_item grid_item-1_3">
                             <div className="main-chart">
                                 <ResponsivePie
-                                    margin={{ top: 80, bottom: 80 }}
+                                    margin={{ top: 60, right: 60, bottom: 60, left: 60 }}
                                     data={_.cloneDeep(data)}
-                                    transitionDuration={4000} transitionEasing="linear"
+                                    transitionDuration={2000} transitionEasing="linear"
                                     {...settings}
-                                    colors="d320"
                                 >
+                                    <PieColumnLegends
+                                        lineColor="inherit:darker(.7)"
+                                        badgeColor="inherit:darker(.7)"
+                                        textColor="inherit:brighter(.3)"
+                                    />
+                                    <PieSliceLegends
+                                        labelFn={d => d.data.label}
+                                        {...sliceLegendsSettings}
+                                    />
                                 </ResponsivePie>
                             </div>
                         </div>
@@ -108,7 +110,11 @@ class PiePage extends Component {
                                 chartClass="Pie"
                                 properties={[
                                     ['sort', 'function', false, (<code>null</code>), ''],
-                                    ['data', 'array', true, '', ''],
+                                    ['data', 'array', true, '', (
+                                        <span>
+                                            must be an array of object, each object having <code className="code-string">"id"</code>, <code className="code-string">"label"</code> and <code className="code-string">"value"</code> properties.
+                                        </span>
+                                    )],
                                     ['keyProp', 'string', true, (<code className="code-string">'label'</code>), ''],
                                     ['valueProp', 'string', true, (<code className="code-string">'value'</code>), ''],
                                     ['startAngle', 'number', true, (<code className="code-number">0</code>), ''],

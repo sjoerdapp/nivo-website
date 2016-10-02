@@ -1,17 +1,23 @@
-.nivo_treemap
-  &_node
-    border-radius 3px
-    font-size 12px
-    //display flex
-    //align-items center
-    //justify-content center
+.nivo_treemap_node
+  border-radius 2px
+  font-size 11px
+  line-height 14px
 
-    &:first-child
-    &._is-parent
-      background transparent !important
+.home .nivo_treemap_node
+  font-size 10px
 
-    .sidebar &
-      border-radius 2px
+.nivo_tick_line
+  stroke #555 !important
+.nivo_tick_text
+  fill #555 !important
+  font-size 11px
+.home .nivo_tick_line
+  stroke #c6432d !important
+.home .nivo_tick_text
+  fill #c6432d !important
+  font-size 9px
+.home .nivo_grid_line
+  stroke #d6513e !important
 
 svg text
   fill $chart-meta-color
@@ -26,6 +32,9 @@ svg text
 .nivo_calendar_month_legend
   font-size 9px
   text-transform uppercase
+
+  .home &
+    text-transform lowercase
 
 .nivo_tree
   text
@@ -49,7 +58,7 @@ svg text
   margin-bottom 30px
 
   &-horizontal
-    height 260px
+    height 320px
 
 .chart_header
   background $accent-color
@@ -59,6 +68,9 @@ svg text
   display flex
   align-items flex-end
   justify-content flex-end
+
+  &_wrapper
+    margin-bottom 0
 
 .chart
   width 100%

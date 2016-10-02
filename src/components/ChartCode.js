@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CollapsibleCard      from './CollapsibleCard';
 
 
 class ChartCode extends Component {
@@ -14,9 +15,11 @@ class ChartCode extends Component {
         const { code } = this.props;
 
         return (
-            <div className="code-snippet">
-                <pre>{code}</pre>
-            </div>
+            <CollapsibleCard title="Code" expandedByDefault={true}>
+                <div className="code-snippet">
+                    <pre>{code}</pre>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 import InnerRadiusControl              from '../../controls/InnerRadiusControl';
 import ColorsControl                   from '../../controls/ColorsControl';
 
@@ -46,8 +46,8 @@ class PieControls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="Pie">
+            <CollapsibleCard title="<Pie /> settings">
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <InnerRadiusControl
                             value={settings.innerRadius}
@@ -85,8 +85,8 @@ class PieControls extends Component {
                             onChange={this.handleCornerRadiusUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

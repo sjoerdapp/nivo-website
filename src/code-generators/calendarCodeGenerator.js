@@ -8,10 +8,12 @@ export const generateCalendarD3Code = ({
     return `import { render }   from 'react-dom';
 import { CalendarD3 } from 'nivo';
 
+const data = […];
+
 render((
     <CalendarD3
         width={600} height={240}
-        direction="${direction}"
+        data={data} direction="${direction}"
         yearSpacing={${yearSpacing}} yearLegendOffset={${yearLegendOffset}}
         daySpacing={${daySpacing}} dayBorderWidth={${dayBorderWidth}} dayBorderColor="${dayBorderColor}"
         monthBorderWidth={${monthBorderWidth}} monthBorderColor="${monthBorderColor}" monthLegendOffset={${monthLegendOffset}}
@@ -31,10 +33,12 @@ export const generateCalendarCode = ({
     return `import { render }   from 'react-dom';
 import { Calendar } from 'nivo';
 
+const data = […];
+
 render((
     <Calendar
         width={600} height={240}
-        direction="${direction}"
+        data={data} direction="${direction}"
         yearSpacing={${yearSpacing}} yearLegendOffset={${yearLegendOffset}}
         daySpacing={${daySpacing}} dayBorderWidth={${dayBorderWidth}} dayBorderColor="${dayBorderColor}"
         monthBorderWidth={${monthBorderWidth}} monthBorderColor="${monthBorderColor}" monthLegendOffset={${monthLegendOffset}}

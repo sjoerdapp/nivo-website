@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../ChartControls';
+import CollapsibleCard                 from '../CollapsibleCard';
 import InnerRadiusControl              from '../controls/InnerRadiusControl';
 import ColorsControl                   from '../controls/ColorsControl';
 import LabelPositionControl            from '../controls/LabelPositionControl';
@@ -69,58 +69,62 @@ class RadialStackControls extends Component {
 
         return (
             <div>
-                <ChartControls chartClass="RadialStack">
-                    <div className="chart-controls_item">
-                        <StackOffsetControl
-                            value={settings.offset}
-                            onChange={this.handleOffsetUpdate}
-                        />
+                <CollapsibleCard title="<RadialStack /> settings" expandedByDefault={true}>
+                    <div className="chart-controls">
+                        <div className="chart-controls_item">
+                            <StackOffsetControl
+                                value={settings.offset}
+                                onChange={this.handleOffsetUpdate}
+                            />
+                        </div>
+                        <div className="chart-controls_item">
+                            <InnerRadiusControl
+                                value={settings.innerRadius}
+                                onChange={this.handleInnerRadiusUpdate}
+                            />
+                        </div>
+                        <div className="chart-controls_item">
+                            <ColorsControl
+                                value={settings.colors}
+                                onChange={this.handleColorsUpdate}
+                            />
+                        </div>
                     </div>
-                    <div className="chart-controls_item">
-                        <InnerRadiusControl
-                            value={settings.innerRadius}
-                            onChange={this.handleInnerRadiusUpdate}
-                        />
+                </CollapsibleCard>
+                <CollapsibleCard title="<RadialStackAngleAxis /> settings">
+                    <div className="chart-controls">
+                        <div className="chart-controls_item">
+                            labelPosition: <code className="code code-string">"{settings.labelPosition}"</code>
+                            <div className="control-help">Define label positioning.</div>
+                            <LabelPositionControl
+                                value={settings.labelPosition}
+                                onChange={this.handleLabelPositionUpdate}
+                            />
+                        </div>
+                        <div className="chart-controls_item">
+                            <label>
+                                labelRotation: <code className="code code-number">{settings.labelRotation}</code>
+                            </label>
+                            <div className="control-help">Rotation of labels.</div>
+                            <input
+                                type="range"
+                                min="0" max="360" step="10"
+                                value={settings.labelRotation}
+                                onChange={this.handleLabelRotationUpdate}
+                            />
+                        </div>
+                        <div className="chart-controls_item">
+                            labelOffset: <code className="code code-number">{settings.labelOffset}</code>
+                            <div className="control-help">Label offset from line end.</div>
+                            <input
+                                type="range"
+                                min="0" max="30" step="1"
+                                value={settings.labelOffset}
+                                onChange={this.handleLabelOffsetUpdate}
+                            />
+                        </div>
                     </div>
-                    <div className="chart-controls_item">
-                        <ColorsControl
-                            value={settings.colors}
-                            onChange={this.handleColorsUpdate}
-                        />
-                    </div>
-                </ChartControls>
-                <ChartControls chartClass="RadialStackAngleAxis">
-                    <div className="chart-controls_item">
-                        labelPosition: <code className="code code-string">"{settings.labelPosition}"</code>
-                        <div className="control-help">Define label positioning.</div>
-                        <LabelPositionControl
-                            value={settings.labelPosition}
-                            onChange={this.handleLabelPositionUpdate}
-                        />
-                    </div>
-                    <div className="chart-controls_item">
-                        <label>
-                            labelRotation: <code className="code code-number">{settings.labelRotation}</code>
-                        </label>
-                        <div className="control-help">Rotation of labels.</div>
-                        <input
-                            type="range"
-                            min="0" max="360" step="10"
-                            value={settings.labelRotation}
-                            onChange={this.handleLabelRotationUpdate}
-                        />
-                    </div>
-                    <div className="chart-controls_item">
-                        labelOffset: <code className="code code-number">{settings.labelOffset}</code>
-                        <div className="control-help">Label offset from line end.</div>
-                        <input
-                            type="range"
-                            min="0" max="30" step="1"
-                            value={settings.labelOffset}
-                            onChange={this.handleLabelOffsetUpdate}
-                        />
-                    </div>
-                </ChartControls>
+                </CollapsibleCard>
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes }          from 'react';
 import _                                        from 'lodash';
 import { Link }                                 from 'react-router';
-import { generateStackData }                    from '../../generators';
+import { generateStackData }                    from 'nivo-generators';
 import ChartHeader                              from '../ChartHeader';
 import ChartCodeAndData                         from '../ChartCodeAndData';
 import Properties                               from '../Properties';

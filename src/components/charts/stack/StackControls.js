@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 import ColorsControl                   from '../../controls/ColorsControl';
 import ColorControl                    from '../../controls/ColorControl';
 import StackOffsetControl              from '../../controls/StackOffsetControl';
@@ -42,8 +42,8 @@ class StackControls extends Component {
         const { settings } = this.props;
 
         return (
-            <div>
-                <ChartControls chartClass="Stack">
+            <CollapsibleCard title="<Stack /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <StackOffsetControl
                             value={settings.offset}
@@ -76,8 +76,8 @@ class StackControls extends Component {
                             onChange={this.handleControlsSpacingUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

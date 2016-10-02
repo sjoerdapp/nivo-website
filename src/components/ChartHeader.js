@@ -7,16 +7,11 @@ class ChartHeader extends Component {
     }
 
     render() {
-        const { chartClass, tags } = this.props;
-
-        let gridModifier = '2_3';
-        if (chartClass === 'Stack') {
-            gridModifier = '1_3';
-        }
+        const { chartClass, tags, chartSize } = this.props;
 
         return (
-            <div className="chart_header">
-                <div className="chart_header_wrapper">
+            <div className="grid chart_header">
+                <div className={`grid_item grid_item-${chartSize}_3 chart_header_wrapper`}>
                     <h1 className="page_header">&lt;{chartClass} /&gt;</h1>
                     <div className="component_meta">
                         {tags.map(tag => (
@@ -28,6 +23,16 @@ class ChartHeader extends Component {
         );
     }
 }
+
+const { number } = PropTypes;
+
+ChartHeader.propTypes = {
+    chartSize: number,
+};
+
+ChartHeader.defaultProps = {
+    chartSize: 2,
+};
 
 
 export default ChartHeader;

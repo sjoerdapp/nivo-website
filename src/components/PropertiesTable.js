@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import { Link }                        from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import { Link }                        from 'react-router'
 
 
 class PropertiesTable extends Component {
     render() {
-        const { properties } = this.props;
+        const { properties } = this.props
 
         return (
             <table>
@@ -20,25 +20,27 @@ class PropertiesTable extends Component {
                 <tbody>
                     {properties.map(prop => {
                         if (prop === 'transitionDuration') {
-                            prop = [prop, 'number', true, (<code>Nivo.defaults.{prop}</code>), (<Link to="animation">documentation</Link>)];
+                            prop = [prop, 'number', true, (<code>Nivo.defaults.{prop}</code>), (<Link to="animation">documentation</Link>)]
                         } else if (prop === 'transitionEasing') {
-                            prop = [prop, 'string', true, (<code>Nivo.defaults.{prop}</code>), (<Link to="animation">documentation</Link>)];
+                            prop = [prop, 'string', true, (<code>Nivo.defaults.{prop}</code>), (<Link to="animation">documentation</Link>)]
                         } else if (prop === 'colors') {
-                            prop = [prop, '*', true, (<code>Nivo.defaults.colorRange</code>), (<Link to="colors">documentation</Link>)];
+                            prop = [prop, '*', true, (<code>Nivo.defaults.colorRange</code>), (<Link to="/guides/colors">documentation</Link>)]
+                        } else if (prop === 'animate') {
+                            prop = [prop, 'boolean', true, (<code>true</code>), 'enable/disable transitions']
                         } else if (prop === 'motionStiffness') {
                             prop = [prop, 'number', true, (<code>Nivo.defaults.motionStiffness</code>), (
                                 <span>
                                     determine react-motion spring stiffness.
                                 </span>
-                            )];
+                            )]
                         } else if (prop === 'motionDamping') {
                             prop = [prop, 'number', true, (<code>Nivo.defaults.motionDamping</code>), (
                                 <span>
                                     determine react-motion spring damping.
                                 </span>
-                            )];
+                            )]
                         } else if (prop === 'width' || prop === 'height') {
-                            prop = [prop, 'number', true, '', `${prop} of the chart.`];
+                            prop = [prop, 'number', true, '', `${prop} of the chart.`]
                         }
 
                         return (
@@ -49,13 +51,13 @@ class PropertiesTable extends Component {
                                 <td>{prop[3]}</td>
                                 <td>{prop[4]}</td>
                             </tr>
-                        );
+                        )
                     })}
                 </tbody>
             </table>
-        );
+        )
     }
 }
 
 
-export default PropertiesTable;
+export default PropertiesTable

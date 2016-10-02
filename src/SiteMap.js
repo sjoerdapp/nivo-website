@@ -1,27 +1,24 @@
-import React                                from 'react';
-import _                                    from 'lodash';
-import { Route, IndexRoute, IndexRedirect } from 'react-router';
+import React                                from 'react'
+import _                                    from 'lodash'
+import { Route, IndexRoute, IndexRedirect } from 'react-router'
 
 
-import Pie                 from './components/charts/pie/Pie';
-import Stack               from './components/charts/stack/Stack';
-import RadialStack         from './components/charts/RadialStack';
-import TreeMap             from './components/charts/treemap/TreeMap';
-import TreeMapD3           from './components/charts/treemap/TreeMapD3';
-import TreeMapPlaceholders from './components/charts/treemap/TreeMapPlaceholders';
-import Bubble              from './components/charts/bubble/Bubble';
-import BubbleD3            from './components/charts/bubble/BubbleD3';
-import BubbleReact         from './components/charts/bubble/BubbleReact';
-import BubblePlaceholders  from './components/charts/bubble/BubblePlaceholders';
-import Calendar            from './components/charts/calendar/Calendar';
-import CalendarReact       from './components/charts/calendar/CalendarReact';
-import CalendarD3          from './components/charts/calendar/CalendarD3';
-import CalendarCanvas      from './components/charts/calendar/CalendarCanvas';
-import Tree                from './components/charts/Tree';
-import Colors              from './components/guides/Colors';
-import Animation           from './components/guides/Animation';
-import About               from './components/About';
-import Features            from './components/Features';
+import BarsPage            from './components/charts/bars/BarsPage'
+import Bars                from './components/charts/bars/Bars'
+import BarsPlaceholders    from './components/charts/bars/BarsPlaceholders'
+import LinePage            from './components/charts/line/LinePage'
+import Line                from './components/charts/line/Line'
+import BubblePage          from './components/charts/bubble/BubblePage'
+import BubbleReact         from './components/charts/bubble/BubbleReact'
+import BubblePlaceholders  from './components/charts/bubble/BubblePlaceholders'
+import TreeMapPage         from './components/charts/treemap/TreeMap'
+import TreeMapReact        from './components/charts/treemap/TreeMapReact'
+import TreeMapPlaceholders from './components/charts/treemap/TreeMapPlaceholders'
+import ChordPage           from './components/charts/chord/ChordPage'
+import Chord               from './components/charts/chord/Chord'
+import Colors              from './components/guides/Colors'
+import About               from './components/About'
+import Features            from './components/Features'
 
 
 const SITEMAP = [
@@ -29,106 +26,99 @@ const SITEMAP = [
         label:    'Charts',
         children: [
             {
+                className: 'bars',
+                path:      'bars',
+                label:     'Bars',
+                component: BarsPage,
+                children:  [
+                    {
+                        className: 'bars-react',
+                        path:      'react',
+                        label:     '<Bars />',
+                        component: Bars,
+                        isIndex:   true,
+                    },
+                    //{
+                    //    className: 'bars-placeholders',
+                    //    path:      'placeholders',
+                    //    label:     '<BarsPlaceholders />',
+                    //    component: BarsPlaceholders,
+                    //},
+                ]
+            },
+            {
+                className: 'line',
+                path:      'line',
+                label:     'Line',
+                component: LinePage,
+                children:  [
+                    {
+                        className: 'line-react',
+                        path:      'react',
+                        label:     '<Line />',
+                        component: Line,
+                        isIndex:   true,
+                    },
+                ]
+            },
+            {
                 className: 'bubble',
                 path:      'bubble',
                 label:     'Bubble',
-                component: Bubble,
+                component: BubblePage,
                 children:  [
                     {
                         className: 'bubble-react',
                         path:      'react',
                         label:     '<Bubble />',
                         component: BubbleReact,
-                        isIndex:   true
-                    },
-                    {
-                        className: 'bubble-d3',
-                        path:      'd3',
-                        label:     '<BubbleD3 />',
-                        component: BubbleD3
+                        isIndex:   true,
                     },
                     {
                         className: 'bubble-placeholders',
                         path:      'placeholders',
                         label:     '<BubblePlaceholders />',
-                        component: BubblePlaceholders
+                        component: BubblePlaceholders,
                     },
                 ]
-            },
-            {
-                className: 'calendar',
-                path:      'calendar',
-                label:     'Calendar',
-                component: Calendar,
-                children:  [
-                    {
-                        className: 'calendar-react',
-                        path:      'react',
-                        label:     '<Calendar />',
-                        component: CalendarReact,
-                    },
-                    {
-                        className: 'calendar-d3',
-                        path:      'd3',
-                        label:     '<CalendarD3 />',
-                        component: CalendarD3,
-                        isIndex:   true,
-                    },
-                    // too experimental :-/
-                    //{
-                    //    className: 'calendar-canvas',
-                    //    path:      'canvas',
-                    //    label:     '<CalendarCanvas />',
-                    //    component: CalendarCanvas,
-                    //},
-                ]
-            },
-            {
-                className: 'pie',
-                path:      'pie',
-                label:     '<Pie />',
-                component: Pie
-            },
-            {
-                className: 'stack',
-                path:      'stack',
-                label:     '<Stack />',
-                component: Stack
-            },
-            {
-                className: 'radial-stack',
-                path:      'radial-stack',
-                label:     '<RadialStack />',
-                component: RadialStack
             },
             {
                 className: 'treemap',
                 path:      'treemap',
                 label:     'TreeMap',
-                component: TreeMap,
+                component: TreeMapPage,
                 children:  [
                     {
-                        className: 'treemap-d3',
-                        path:      'd3',
-                        label:     '<TreeMapD3 />',
-                        component: TreeMapD3,
-                        isIndex:   true
+                        className: 'treemap-react',
+                        path:      'react',
+                        label:     '<TreeMap />',
+                        component: TreeMapReact,
+                        isIndex:   true,
                     },
                     {
                         className: 'treemap-placeholders',
                         path:      'placeholders',
                         label:     '<TreeMapPlaceholders />',
-                        component: TreeMapPlaceholders
+                        component: TreeMapPlaceholders,
                     },
                 ]
             },
             {
-                className: 'tree',
-                path:      'tree',
-                label:     '<Tree />',
-                component: Tree
+                className: 'chord',
+                path:      'chord',
+                label:     'Chord',
+                component: ChordPage,
+                children:  [
+                    {
+                        className: 'chord-react',
+                        path:      'react',
+                        label:     '<Chord />',
+                        component: Chord,
+                        isIndex:   true,
+                    },
+                ],
             },
-        ]
+        ],
     },
     {
         label:    'Guides',
@@ -137,13 +127,7 @@ const SITEMAP = [
                 className: 'colors',
                 path:      'guides/colors',
                 label:     'Colors',
-                component: Colors
-            },
-            {
-                className: 'animation',
-                path:      'guides/animation',
-                label:     'Animation',
-                component: Animation
+                component: Colors,
             },
         ]
     },
@@ -154,33 +138,33 @@ const SITEMAP = [
                 className: 'about',
                 path:      'about',
                 label:     'About',
-                component: About
+                component: About,
             },
             {
                 className: 'features',
                 path:      'features',
                 label:     'Features',
-                component: Features
+                component: Features,
             },
         ]
     }
-];
+]
 
 
 export const getSectionItems = (sectionLabel) => {
-    const section = _.find(SITEMAP, { label: sectionLabel });
+    const section = _.find(SITEMAP, { label: sectionLabel })
 
-    return section.children;
-};
+    return section.children
+}
 
 
 export const getRoutes = () => {
-    const routes = [];
+    const routes = []
 
     SITEMAP.forEach(item => {
         if (item.children && item.children.length > 0) {
             item.children.forEach(sectionItem => {
-                const routeChildren = [];
+                const routeChildren = []
 
                 if (sectionItem.children) {
                     sectionItem.children.forEach(childItem => {
@@ -190,7 +174,7 @@ export const getRoutes = () => {
                                     key={`${childItem.path}.index-redirect`}
                                     to={`/${sectionItem.path}/${childItem.path}`}
                                 />
-                            );
+                            )
                         }
 
                         routeChildren.push(
@@ -199,8 +183,8 @@ export const getRoutes = () => {
                                 path={childItem.path}
                                 component={childItem.component}
                             />
-                        );
-                    });
+                        )
+                    })
                 }
 
                 routes.push(
@@ -211,10 +195,10 @@ export const getRoutes = () => {
                     >
                         {routeChildren}
                     </Route>
-                );
-            });
+                )
+            })
         }
-    });
+    })
 
-    return routes;
-};
+    return routes
+}

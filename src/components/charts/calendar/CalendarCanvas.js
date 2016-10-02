@@ -1,6 +1,6 @@
 import React, { Component, PropTypes }      from 'react';
 import { Link }                             from 'react-router';
-import { generateProgrammingLanguageStats } from '../../../generators';
+import { generateProgrammingLanguageStats } from 'nivo-generators';
 import ChartHeader                          from '../../ChartHeader';
 import ChartCodeAndData                     from '../../ChartCodeAndData';
 import Properties                           from '../../Properties';

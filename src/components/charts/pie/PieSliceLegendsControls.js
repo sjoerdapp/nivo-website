@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _                               from 'lodash';
-import ChartControls                   from '../../ChartControls';
+import CollapsibleCard                 from '../../CollapsibleCard';
 import ColorControl                    from '../../controls/ColorControl';
 
 
@@ -42,8 +42,8 @@ class PieSliceLegendsControls extends Component {
          */
 
         return (
-            <div>
-                <ChartControls chartClass="PieSliceLegends">
+            <CollapsibleCard title="<PieSliceLegends /> settings" expandedByDefault={true}>
+                <div className="chart-controls">
                     <div className="chart-controls_item">
                         <label>
                             radius: <code className="code code-number">{settings.radius}</code>
@@ -72,8 +72,8 @@ class PieSliceLegendsControls extends Component {
                             onChange={this.handleTextColorUpdate}
                         />
                     </div>
-                </ChartControls>
-            </div>
+                </div>
+            </CollapsibleCard>
         );
     }
 }

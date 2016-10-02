@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link }             from 'react-router';
-import { getSectionItems }  from '../../SiteMap';
+import React, { Component } from 'react'
+import { Link }             from 'react-router'
+import { getSectionItems }  from '../../SiteMap'
 
 
-const chartsItems = getSectionItems('Charts');
-const guidesItems = getSectionItems('Guides');
+const chartsItems = getSectionItems('Charts')
+const guidesItems = getSectionItems('Guides')
 
 
 
