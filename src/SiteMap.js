@@ -19,6 +19,7 @@ import Chord               from './components/charts/chord/Chord'
 import Colors              from './components/guides/Colors'
 import About               from './components/About'
 import Features            from './components/Features'
+import API                 from './components/api/API'
 
 
 const SITEMAP = [
@@ -146,6 +147,12 @@ const SITEMAP = [
                 label:     'Features',
                 component: Features,
             },
+            {
+                className: 'api-client',
+                path:      'api',
+                label:     'API',
+                component: API,
+            }
         ]
     }
 ]

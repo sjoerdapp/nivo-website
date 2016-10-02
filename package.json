@@ -42,7 +42,7 @@
     "d3-scale-chromatic": "1.0.2",
     "history": "2.1.1",
     "lodash": "4.16.2",
-    "nivo": "1.0.0-alpha.3",
+    "nivo": "1.0.0-alpha.4",
     "nivo-generators": "1.0.0-alpha.2",
     "npm": "3.9.0",
     "react": "15.3.2",

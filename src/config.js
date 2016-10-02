@@ -9,5 +9,5 @@
 'use strict'
 
 module.exports = {
-    nivoApiUrl: 'https://nivo-api.herokuapp.com'
+    nivoApiUrl: 'http://nivo-api.herokuapp.com'
 }

@@ -20,6 +20,8 @@ class ChordControls extends Component {
     constructor(props) {
         super(props)
 
+        this.handleWidthUpdate             = this.handleWidthUpdate.bind(this)
+        this.handleHeightUpdate            = this.handleHeightUpdate.bind(this)
         this.handlePadAngleUpdate          = this.handlePadAngleUpdate.bind(this)
         this.handleInnerRadiusRatioUpdate  = this.handleInnerRadiusRatioUpdate.bind(this)
         this.handleInnerRadiusOffsetUpdate = this.handleInnerRadiusOffsetUpdate.bind(this)
@@ -32,6 +34,16 @@ class ChordControls extends Component {
 
     shouldComponentUpdate(nextProps) {
         return nextProps.settings !== this.props.settings
+    }
+
+    handleWidthUpdate(e) {
+        const { onChange, settings } = this.props
+        onChange(_.assign({}, settings, { width: parseInt(e.target.value, 10) }))
+    }
+
+    handleHeightUpdate(e) {
+        const { onChange, settings } = this.props
+        onChange(_.assign({}, settings, { height: parseInt(e.target.value, 10) }))
     }
 
     handlePadAngleUpdate(e) {
@@ -80,6 +92,29 @@ class ChordControls extends Component {
         return (
             <CollapsibleCard title="Settings" expandedByDefault={true}>
                 <div className="chart-controls">
+                    {target === 'ChordAPI' && (
+                        <div className="chart-controls_item">
+                            <label htmlFor="chord-width">width</label><br />
+                            <input
+                                id="chord-width"
+                                type="number"
+                                value={settings.width}
+                                onChange={this.handleWidthUpdate}
+                            />
+                        </div>
+                    )}
+                    {target === 'ChordAPI' && (
+                        <div className="chart-controls_item">
+                            <label htmlFor="chord-height">height</label><br />
+                            <input
+                                id="chord-height"
+                                type="number"
+                                value={settings.height}
+                                onChange={this.handleHeightUpdate}
+                            />
+                        </div>
+                    )}
+                    {target === 'ChordAPI' && <div style={{ width: '100%' }} />}
                     <SliderControl
                         id="chord-pad-angle" label="padAngle"
                         value={settings.padAngle}
@@ -149,6 +184,7 @@ ChordControls.propTypes = {
     onChange: PropTypes.func.isRequired,
     target:   PropTypes.oneOf([
         'Chord',
+        'ChordAPI',
     ]).isRequired,
 }
 
