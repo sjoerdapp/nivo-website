@@ -78,7 +78,7 @@ class ChordControls extends Component {
         const { target, settings } = this.props
 
         return (
-            <CollapsibleCard title={`<${target} /> settings`} expandedByDefault={true}>
+            <CollapsibleCard title="Settings" expandedByDefault={true}>
                 <div className="chart-controls">
                     <SliderControl
                         id="chord-pad-angle" label="padAngle"

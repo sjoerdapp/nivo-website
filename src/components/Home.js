@@ -61,47 +61,59 @@ class Home extends Component {
                         </span>
                     </Link>
                 </MediaQuery>
-                <Link className="home_item" to="/">
-                    {/*
-                    <ResponsivePie
-                        margin={{ top: 40, right: 120, bottom: 40, left: 120 }}
-                        data={generateProgrammingLanguageStats(false, 7).map(({ label, value }) => ({
-                            id: label, label, value
-                        }))}
-                        transitionDuration={transitionDuration}
-                        innerRadius={0.6} colors={colors}
-                    >
-                        <PieColumnLegends
-                            horizontalOffset={30} radiusOffset={20}
-                            lineColor="inherit" textColor="inherit"
-                        />
-                    </ResponsivePie>
-                    <span className="home_item_label">
-                        <span>Pie documentation</span>
-                    </span>
-                    */}
-                </Link>
-                <Link className="home_item" to="/">
-                    {/*
-                    <ResponsiveStack
-                        margin={{ top: 4, right: 4, bottom: 4, left: 4 }}
-                        data={generateStackData()}
+                <Link className="home_item" to="/line">
+                    <ResponsiveLine
+                        margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
+                        keys={['beer', 'whisky', 'rhum', 'gin', 'vodka', 'cognac']}
+                        data={generateDrinkStats(12)}
+                        identity="country"
                         colors={colors}
-                        offset="wiggle"
-                        transitionDuration={transitionDuration}
-                    >
-                        <StackSlicer
-                            radius={4} borderWidth={1}
-                            color="inherit" dotBorderColor="#e25d47"
-                            lineWidth={0} lineColor="#e25d47"
-                        />
-                    </ResponsiveStack>
+                        xAxisTickSize={4}
+                        xAxisTickPadding={2}
+                        yAxisTickSize={4}
+                        YAxisTickPadding={2}
+                        animate={false}
+                        curve="monotoneX"
+                    />
                     <span className="home_item_label">
-                        <span>Stack documentation</span>
+                        <span>Line documentation</span>
                     </span>
-                    */}
+                </Link>
+                <Link className="home_item" to="/bubble">
+                    <ResponsiveBubble
+                        root={generateLibTree()}
+                        identity="name"
+                        enableLabel={false}
+                        value="loc"
+                        animate={false}
+                        colors={colors}
+                    />
+                    <span className="home_item_label">
+                        <span>Bubble documentation</span>
+                    </span>
                 </Link>
                 <MediaQuery query="(min-width: 1000px)" className="home_item">
+                    <Link className="home_item" to="/bars">
+                        <ResponsiveBars
+                            margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
+                            data={generateDrinkStats(16)}
+                            keys={['beer', 'whisky', 'rhum', 'gin', 'vodka', 'cognac']}
+                            identity="country"
+                            spacing={.4}
+                            colors={colors}
+                            groupMode="stacked"
+                            xAxisTickSize={4}
+                            xAxisTickPadding={2}
+                            yAxisTickSize={4}
+                            YAxisTickPadding={2}
+                            animate={false}
+                        />
+                        <span className="home_item_label">
+                            <span>Bars documentation</span>
+                        </span>
+                    </Link>
+                </MediaQuery>
+                <MediaQuery query="(min-width: 1200px)" className="home_item">
                     <Link className="home_item" to="/bars">
                         <ResponsiveBars
                             margin={{ top: 10, bottom: 15, left: 24, right: 0 }}
@@ -120,23 +132,6 @@ class Home extends Component {
                         <span className="home_item_label">
                             <span>Bars documentation</span>
                         </span>
-                    </Link>
-                </MediaQuery>
-                <MediaQuery query="(min-width: 1200px)" className="home_item">
-                    <Link className="home_item" to="/">
-                        {/*
-                        <Tree
-                            margin={{ top: 3, right: 6, bottom: 30, left: 6 }}
-                            root={generateLibTree()} identity={d => d.name}
-                            labelPaddingX={4} labelPaddingY={1}
-                            direction="vertical-reverse"
-                            colors={[colors[0]]} nodeRadius={2}
-                            transitionDuration={transitionDuration}
-                        />
-                        <span className="home_item_label">
-                            <span>Tree documentation</span>
-                        </span>
-                         */}
                     </Link>
                 </MediaQuery>
                 <div className="home_item">

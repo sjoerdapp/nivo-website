@@ -10,12 +10,12 @@
 
 import React, { Component, PropTypes } from 'react'
 import { Link }                        from 'react-router'
-import { ResponsiveChord }             from 'nivo'
+import { Chord, ResponsiveChord }      from 'nivo'
 import ChartHeader                     from '../../ChartHeader'
 import ChartCodeAndData                from '../../ChartCodeAndData'
 import Properties                      from '../../Properties'
 import ChordControls                   from './ChordControls'
-import { generateBarsD3Code }          from '../../../code-generators/barsCodeGenerator'
+import { generateChordCode }           from '../../../code-generators/chordCodeGenerator'
 import config                          from '../../../config'
 
 
@@ -57,7 +57,7 @@ class Bars extends Component {
         const { data, onDataUpdate } = this.props
         const { settings }           = this.state
 
-        const code = generateBarsD3Code(settings)
+        const code = generateChordCode(settings)
 
         return (
             <div>
@@ -89,16 +89,20 @@ class Bars extends Component {
                                 chartClass="Chord"
                                 properties={[
                                     ['width', 'number', true, '', (
-                                        <span>not required if using <code>&lt;ResponsiveBarsD3&nbsp;/&gt;</code>.</span>
+                                        <span>not required if using <code>&lt;ResponsiveChord&nbsp;/&gt;</code>.</span>
                                     )],
                                     ['height', 'number', true, '', (
-                                        <span>not required if using <code>&lt;ResponsiveBarsD3&nbsp;/&gt;</code>.</span>
+                                        <span>not required if using <code>&lt;ResponsiveChord&nbsp;/&gt;</code>.</span>
                                     )],
-                                    ['data', 'object', true, '', 'data.'],
-                                    'colors',
-                                    'transitionDuration',
-                                    'transitionEasing',
-                                    ['transitionStaggering', 'number', true, (<code className="code-number">10</code>), 'delay (ms) between each bar transition.'],
+                                    ['data', 'array', true, '', 'data.'],
+                                    ['padAngle', 'number', false, <code>{Chord.defaultProps.padAngle}</code>, ''],
+                                    ['innerRadiusRatio', 'number', false, <code>{Chord.defaultProps.innerRadiusRatio}</code>, ''],
+                                    ['innerRadiusOffset', 'number', false, <code>{Chord.defaultProps.innerRadiusOffset}</code>, ''],
+                                    ['ribbonOpacity', 'number', false, <code>{Chord.defaultProps.ribbonOpacity}</code>, ''],
+                                    ['ribbonBorderWidth', 'number', false, <code>{Chord.defaultProps.ribbonBorderWidth}</code>, ''],
+                                    ['arcOpacity', 'number', false, <code>{Chord.defaultProps.arcOpacity}</code>, ''],
+                                    ['arcBorderWidth', 'number', false, <code>{Chord.defaultProps.arcBorderWidth}</code>, ''],
+                                    'colors'
                                 ]}
                             />
                         </div>
