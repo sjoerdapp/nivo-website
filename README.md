@@ -1,6 +1,6 @@
 # nivo-website
 
-Sources for https://github.com/plouc/nivo.
+Sources for [nivo](https://github.com/plouc/nivo) [website](https://plouc.github.io/nivo/).
 
 ## Repositories
 
